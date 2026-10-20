@@ -42,16 +42,11 @@ if command -v firejail >/dev/null 2>&1; then
   echo "    [1] Outer Wall (Firejail): Host files (~/.ssh, Documents, Desktop) 100% hidden."
   echo "    [2] Inner Wall (Mozilla L3): Content processes isolated with Seccomp-BPF."
   echo "    [3] Network & Transports: Tor daemon & obfs4 bridges allowed to communicate."
-  nohup firejail --noprofile \
-    --private-home=.local/share/torbrowser \
-    --private-dev \
-    --private-tmp \
-    --caps.drop=all \
-    "$TOR_CMD" >/dev/null 2>&1 &
+  nohup firejail "$TOR_CMD" >/tmp/tor-browser-firejail.log 2>&1 &
   echo "[+] Tor Browser is now RUNNING in Firejail Nested Double Sandbox!"
 else
   echo "[+] Launching Tor Browser (Native Mozilla Level-3 Sandbox + Seccomp-BPF)..."
-  nohup "$TOR_CMD" >/dev/null 2>&1 &
+  nohup "$TOR_CMD" >/tmp/tor-browser.log 2>&1 &
   echo "[+] Tor Browser is now RUNNING safely!"
 fi
 
