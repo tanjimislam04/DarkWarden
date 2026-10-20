@@ -1,0 +1,13 @@
+# Robin Tor config with obfs4 bridges (Team NullX)
+# Used by entrypoint when this file is present at /app/vpn/torrc
+
+SocksPort 9050
+DataDirectory /home/robin/.tor
+RunAsDaemon 0
+
+UseBridges 1
+ClientTransportPlugin obfs4 exec /usr/bin/obfs4proxy
+
+Bridge obfs4 31.14.41.109:6000 A5B9A30C20C396AC7402BBEE1CA568D5BF2FBA99 cert=CWnSYfTtmvXNiZL24fxIkIxSEtKtlxgicOWa09nG6iIOuMU2duYcLmJKEe29d9VfPP0qNg iat-mode=0
+Bridge obfs4 83.212.72.81:8081 4EE7C39C49B1941326DA9F9DF3340EE7CB17CFB4 cert=ZD4OL/i49HyLPLOgmdlNYIy9BkTYrPLe2mZwuwU5vatbdSJwxTiVRXEbkJnE+M+40GR3Dg iat-mode=0
+
