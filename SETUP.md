@@ -6,8 +6,7 @@
 ![Security Architecture](https://img.shields.io/badge/Defense-6--Layer%20Shield-success?style=for-the-badge&logo=shield)
 ![Tor](https://img.shields.io/badge/Tor-obfs4%20Obfuscation-7D4698?style=for-the-badge&logo=tor-browser&logoColor=white)
 ![Docker](https://img.shields.io/badge/Docker-Containerized-2496ED?style=for-the-badge&logo=docker&logoColor=white)
-![AI Engine](https://img.shields.io/badge/AI%20Engine-Google%20Gemini-4285F4?style=for-the-badge&logo=google&logoColor=white)
-![License](https://img.shields.io/badge/License-Educational%20%26%20Research-blue?style=for-the-badge)
+![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)
 
 **Department of Software Engineering · Daffodil International University (DIU)**  
 *Lead Author & Architect:* **Md. Tanjim Islam (Tanjim_islam)**  
