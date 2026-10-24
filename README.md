@@ -81,9 +81,9 @@ All outbound and inbound operations flow through six strictly isolated defense t
  ║            │                                                                     ║
  ║            ▼                                                                     ║
  ║   ┌────────────────────────────────────────────────────────────────────────┐     ║
- ║   │ LAYER 1: HARDWARE GATEWAY ISOLATION                                    │     ║
- ║   │ Dedicated MikroTik Router (nx-lab-gw) · PPPoE Uplink · Hidden SSID     │     ║
- ║   │ Prevents home network cross-contamination & MAC address disclosure     │     ║
+ ║   │ LAYER 1: HARDWARE GATEWAY / HOST-LEVEL STEALTH ISOLATION               │     ║
+ ║   │ Dual-Mode: MikroTik Lab Gateway (nx-lab-gw) OR Host LAN Stealth & Drop │     ║
+ ║   │ Prevents local network cross-contamination & MAC address disclosure    │     ║
  ║   └────────────────────────────────┬───────────────────────────────────────┘     ║
  ║                                    │                                             ║
  ║                                    ▼                                             ║
@@ -131,6 +131,21 @@ All outbound and inbound operations flow through six strictly isolated defense t
  ║                                                                                  ║
  ╚══════════════════════════════════════════════════════════════════════════════════╝
 ```
+
+### 1.2.1 Layer 1: Dual-Mode Network Gateway (Hardware Router vs. Host Stealth Mode)
+
+The architecture is designed to be **Router-Agnostic** and operates reliably in two operational environments:
+
+1. **Mode A — Dedicated Lab Hardware (MikroTik hAP lite `nx-lab-gw`):**
+   - Connected via hidden SSID `NX-LAB` with dedicated PPPoE uplink.
+   - Provides physical hardware network segmentation and prevents domestic LAN cross-contamination.
+
+2. **Mode B — Remote / Host Stealth Mode (When Lab Router is Unavailable):**
+   - When operating over standard home Wi-Fi, campus networks, or mobile hotspots, physical router isolation is substituted by **Linux Host-Level Stealth Controls**:
+     - **Full Incoming Traffic Drop (`ufw default deny incoming`):** Completely conceals the workstation from other devices on the same Wi-Fi subnet; drops all ARP, mDNS, NetBIOS, and port-scan probes.
+     - **Strict Egress Killswitch (Layer 2):** Prevents cleartext leaks from reaching the local router by forcing 100% of outbound packets through the encrypted VPN tunnel.
+     - **Reverse Path Filtering (`net.ipv4.conf.all.rp_filter=1`):** Rejects spoofed packets and asymmetric routing attacks.
+     - **MAC Address Randomization:** Obfuscates the physical NIC hardware address from public router DHCP lease logs.
 
 ---
 

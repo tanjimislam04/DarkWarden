@@ -79,12 +79,14 @@ ufw allow out 51820/udp >/dev/null
 
 ufw --force enable >/dev/null
 
-# 3. Disable IPv6 to prevent IPv6 bypass leaks
+# 3. Network Hardening (Disable IPv6 & Enable Reverse Path Filtering)
 sysctl -w net.ipv6.conf.all.disable_ipv6=1 >/dev/null 2>&1 || true
 sysctl -w net.ipv6.conf.default.disable_ipv6=1 >/dev/null 2>&1 || true
+sysctl -w net.ipv4.conf.all.rp_filter=1 >/dev/null 2>&1 || true
+sysctl -w net.ipv4.conf.default.rp_filter=1 >/dev/null 2>&1 || true
 
 echo "=========================================================="
 echo "[+] SECURE SESSION READY!"
 echo "[+] Host Killswitch is ACTIVE. Normal ISP traffic is BLOCKED."
-echo "[+] All traffic is forced through MikroTik -> Proton VPN."
+echo "[+] Gateway Isolation: Enforced via Hardware (Lab) or Host Stealth (Remote)."
 echo "=========================================================="
