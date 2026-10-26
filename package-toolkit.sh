@@ -4,7 +4,7 @@
 set -euo pipefail
 cd "$(dirname "$0")"
 
-PACKAGE_NAME="TeamNullX-Robin-Toolkit-SHARE.tgz"
+PACKAGE_NAME="TeamNullX-SafeTor-Toolkit-SHARE.tgz"
 echo "==> Creating clean team share package: $PACKAGE_NAME..."
 
 # Remove any old package
@@ -17,23 +17,6 @@ tar --exclude='.env' \
     --exclude='*.tgz' \
     --exclude='__pycache__' \
     -czf "$PACKAGE_NAME" \
-    Dockerfile \
-    entrypoint.sh \
-    requirements.txt \
-    config.py \
-    llm.py \
-    llm_utils.py \
-    model_registry.py \
-    models.json \
-    pipeline.py \
-    prompts.py \
-    scrape.py \
-    search.py \
-    store.py \
-    ui.py \
-    server.json \
-    run-robin.sh \
-    stop-robin.sh \
     run-tor-browser.sh \
     stop-tor-browser.sh \
     sanitize-file.sh \
@@ -49,12 +32,11 @@ tar --exclude='.env' \
     README.md \
     SETUP.md \
     ARCHITECTURE.md \
-    "team nullx  project Dark Hunt _ privavcy setup.md" \
-    PROJECT_DARK_HUNT_MASTER_WRITEUP.md
+    LICENSE
 
 echo "=========================================================="
 echo "[+] SUCCESS: $PACKAGE_NAME created!"
-echo "    Contains: Upgraded Architecture + obfs4 Torrc + Firejail + Killswitch"
+echo "    Contains: 6-Layer Architecture + obfs4 Torrc + Firejail + Killswitch + Sanitizer"
 echo "    Excluded: .env (API keys), investigations, personal credentials"
-echo "    You can now safely share this with Tanjim and Apon!"
+echo "    You can now safely share this with Rafi, Tanjim, and Apon!"
 echo "=========================================================="

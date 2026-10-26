@@ -1,39 +1,77 @@
 # Project Dark Hunt — End-to-End System Architecture
-**Team:** Team NullX (DIU)  
+
 **Classification:** Lawful Cyber Exposure & Dark Web Threat Intelligence  
 **Target:** 45 Key Point Installations (KPIs) of Bangladesh  
+**Department:** Department of Software Engineering · Daffodil International University (DIU)  
+**Lead Author & Architect:** Md. Tanjim Islam (Tanjim_islam)  
+**Project Team:** Team NullX (Rahat Sahriar Rafi, Md. Tanjim Islam, MD RAKIB HASAN APON)  
+**Advisory / Sponsor:** Tanvir Hassan Zoha  
 
 ---
 
-## 1. Architectural Blueprint (Defense-in-Depth)
+## 1. Architectural Blueprint (6-Layer Defense-in-Depth Shield)
 
-```
-┌────────────────────────────────────────────────────────────────────────┐
-│ Layer 1: Hardware & Physical Gateway                                   │
-│ MikroTik hAP lite (nx-lab-gw) · Hidden Wi-Fi (NX-LAB) · PPPoE WAN     │
-│ Isolates team & personal identities from raw home/university ISP logs. │
-└───────────────────────────────────┬────────────────────────────────────┘
-                                    │
-┌───────────────────────────────────▼────────────────────────────────────┐
-│ Layer 2: Network Session & Kernel Killswitch                           │
-│ Proton VPN + Host UFW Firewall Session Lock (./vpn/project-vpn-on.sh)  │
-│ Strict rules: blocks 100% outbound packets if VPN tunnel drops.        │
-└───────────────────┬────────────────────────────────┬───────────────────┘
-                    │                                │
-┌───────────────────▼──────────────┐   ┌─────────────▼───────────────────┐
-│ Layer 3: AI OSINT Engine         │   │ Layer 4: Link Verification      │
-│ Robin in Docker Container        │   │ Tor Browser in Firejail Sandbox │
-│ • Port mapped: 127.0.0.1:8501    │   │ • Ephemeral RAM filesystem      │
-│ • obfs4 bridges via vpn/torrc    │   │ • No disk traces on close       │
-│ • No JS execution during scrape  │   │ • Native rendering (0% lag)     │
-│ • Safe LLM report generation     │   │ • Strict Seccomp & dropped caps │
-└───────────────────┬──────────────┘   └─────────────┬───────────────────┘
-                    │                                │
-┌───────────────────▼────────────────────────────────▼───────────────────┐
-│ Layer 5: Evidence Integrity & Cryptographic Provenance                 │
-│ Evidence artifacts preserved with SHA-256 ledgers (./log-evidence.sh)  │
-│ PII & leaked passwords redacted before team logging or submission.     │
-└────────────────────────────────────────────────────────────────────────┘
+```text
+ ╔══════════════════════════════════════════════════════════════════════════════════╗
+ ║                                                                                  ║
+ ║   [ Internet Service Provider (ISP) / Public Uplink ]                            ║
+ ║            │                                                                     ║
+ ║            ▼                                                                     ║
+ ║   ┌────────────────────────────────────────────────────────────────────────┐     ║
+ ║   │ LAYER 1: HARDWARE GATEWAY / HOST-LEVEL STEALTH ISOLATION               │     ║
+ ║   │ Dual-Mode: MikroTik Lab Gateway (nx-lab-gw) OR Host LAN Stealth & Drop │     ║
+ ║   │ Prevents local network cross-contamination & MAC address disclosure    │     ║
+ ║   └────────────────────────────────┬───────────────────────────────────────┘     ║
+ ║                                    │                                             ║
+ ║                                    ▼                                             ║
+ ║   ┌────────────────────────────────────────────────────────────────────────┐     ║
+ ║   │ LAYER 2: ENCRYPTED NETWORK TUNNEL & AIRTIGHT EGRESS KILLSWITCH         │     ║
+ ║   │ Proton VPN (Encrypted WireGuard) + Linux Host UFW Firewall Drop Rules   │     ║
+ ║   │ Physical uplink pinned strictly to VPN IP; zero cleartext leak         │     ║
+ ║   └────────────────────────────────┬───────────────────────────────────────┘     ║
+ ║                                    │                                             ║
+ ║                                    ▼                                             ║
+ ║   ┌────────────────────────────────────────────────────────────────────────┐     ║
+ ║   │ LAYER 3: TOR TRAFFIC OBFUSCATION & PLUGGABLE TRANSPORTS                │     ║
+ ║   │ obfs4proxy Bridge Routing · Anti-DPI Packet Scrambling · SOCKS5 Proxy  │     ║
+ ║   │ Scrambles Tor handshakes into high-entropy random byte streams         │     ║
+ ║   └────────────────────────────────┬───────────────────────────────────────┘     ║
+ ║                                    │                                             ║
+ ║                                    ▼                                             ║
+ ║   ┌────────────────────────────────────────────────────────────────────────┐     ║
+ ║   │ LAYER 4: NESTED DOUBLE-SANDBOX TOR BROWSER                             │     ║
+ ║   │  ┌──────────────────────────────────────────────────────────────────┐  │     ║
+ ║   │  │ Outer Wall: Firejail Sandbox                                     │  │     ║
+ ║   │  │ • Conceals ~/.ssh, Desktop, bash history, credentials            │  │     ║
+ ║   │  │ • Drops Linux kernel capabilities (--caps.drop=all, --noroot)    │  │     ║
+ ║   │  │ • Maps throwaway RAM-backed /tmp and /dev devices                │  │     ║
+ ║   │  │  ┌────────────────────────────────────────────────────────────┐  │  │     ║
+ ║   │  │  │ Inner Wall: Mozilla Content Sandbox (Level 3)              │  │  │     ║
+ ║   │  │  │ • Isolated child rendering processes with Seccomp-BPF      │  │  │     ║
+ ║   │  │  │ • Security Level: "Safest" (JavaScript disabled globally)  │  │  │     ║
+ ║   │  │  └────────────────────────────────────────────────────────────┘  │  │     ║
+ ║   │  └──────────────────────────────────────────────────────────────────┘  │     ║
+ ║   └────────────────────────────────┬───────────────────────────────────────┘     ║
+ ║                                    │                                             ║
+ ║                                    ▼                                             ║
+ ║   ┌────────────────────────────────────────────────────────────────────────┐     ║
+ ║   │ LAYER 5: PAYLOAD DISINFECTION & SENTRY (Auto-Sanitizer Daemon)         │     ║
+ ║   │ • Real-Time Inotify Download Watcher (auto_sanitizer.py)               │     ║
+ ║   │ • Dangerzone Pixel Flattening (Destroys macros, scripts, font bugs)   │     ║
+ ║   │ • CSV Formula Defanging (=cmd|... neutralized with ')                  │     ║
+ ║   │ • ExifTool Metadata & Tracker Stripping                                │     ║
+ ║   │ • Dangerous original auto-moved to investigations/quarantine/          │     ║
+ ║   │ • Disposable Zero-Network Docker Viewer (view-in-sandbox.sh)           │     ║
+ ║   └────────────────────────────────┬───────────────────────────────────────┘     ║
+ ║                                    │                                             ║
+ ║                                    ▼                                             ║
+ ║   ┌────────────────────────────────────────────────────────────────────────┐     ║
+ ║   │ LAYER 6: EVIDENCE INTEGRITY & CHAIN OF CUSTODY                         │     ║
+ ║   │ SHA-256 Cryptographic Hash Generation + Immutable CSV Audit Ledger     │     ║
+ ║   │ logs artifact name, hash, timestamp, and investigator KPI tag          │     ║
+ ║   └────────────────────────────────────────────────────────────────────────┘     ║
+ ║                                                                                  ║
+ ╚══════════════════════════════════════════════════════════════════════════════════╝
 ```
 
 ---
@@ -42,20 +80,31 @@
 
 ```text
 ~/robin/
-├── ARCHITECTURE.md                  ← This document
-├── SETUP.md                         ← Teammate installation & quickstart
-├── PROJECT_DARK_HUNT_MASTER_WRITEUP.md ← Project scope & RACI
-├── package-toolkit.sh               ← Bundles clean shareable package
-├── log-evidence.sh                  ← Cryptographic SHA-256 evidence recorder
-├── run-robin.sh / stop-robin.sh     ← Robin OSINT container controller
-├── run-tor-browser.sh / stop-tor-browser.sh ← Firejail private Tor Browser
-├── Dockerfile / entrypoint.sh       ← Tor + obfs4proxy container definition
-├── investigations/                  ← Saved reports & evidence ledger
-│   └── evidence/                    ← SHA-256 verified artifact repository
+├── ARCHITECTURE.md                  ← System blueprint & defense-in-depth model
+├── README.md                        ← Main operational & architectural guide
+├── SETUP.md                         ← Setup, prerequisites & installation reference
+├── LICENSE                          ← MIT License
+├── auto_sanitizer.py                ← Real-time inotify download sentry daemon
+├── watch-and-sanitize.sh            ← Controller for auto_sanitizer.py
+├── sanitize-file.sh                 ← Universal Anti-Malware File Sanitizer (4 solutions)
+├── view-in-sandbox.sh               ← Disposable Zero-Network Docker Viewer
+├── run-tor-browser.sh               ← Nested double-sandbox Tor launcher (Firejail)
+├── stop-tor-browser.sh              ← Clean Tor browser & sentry shutdown
+├── install-firejail.sh              ← Firejail sandbox automated installer
+├── install-dangerzone.sh            ← Dangerzone anti-malware installer
+├── log-evidence.sh                  ← Cryptographic SHA-256 evidence ledger recorder
+├── package-toolkit.sh               ← Clean team distribution bundler
+├── investigations/                  ← Monitored folder, evidence & quarantine
+│   ├── downloads/                   ← Monitored ingestion folder
+│   ├── evidence/                    ← SHA-256 verified artifact repository
+│   ├── evidence_ledger.csv          ← Immutable audit ledger
+│   └── quarantine/                  ← Isolated storage for hazardous originals
 └── vpn/
-    ├── project-vpn-on.sh            ← Starts VPN + activates UFW killswitch
-    ├── project-vpn-off.sh           ← Cleanly restores normal internet
-    ├── killswitch-off.sh            ← Emergency network unlock
+    ├── project-vpn-on.sh            ← Starts VPN + pins airtight UFW killswitch
+    ├── project-vpn-off.sh           ← Cleanly restores normal network & removes killswitch
+    ├── verify-killswitch.sh         ← Live killswitch leak & security audit tool
+    ├── killswitch-off.sh            ← Emergency network unlock utility
+    ├── check-bridges.sh             ← Bridge reachability verification tool
     └── torrc                        ← Active obfs4 bridges configuration
 ```
 
@@ -64,21 +113,36 @@
 ## 3. Standard Operational Flow (SOP)
 
 ```bash
-# 1. Start Session
+# ==============================================================================
+# 1. Start Encrypted Session & Lock Killswitch (Layer 2)
+# ==============================================================================
 cd ~/robin
 ./vpn/project-vpn-on.sh
+./vpn/verify-killswitch.sh   # Confirms physical leak is 100% blocked
+./vpn/check-bridges.sh       # Tests TCP reachability of configured obfs4 bridges
 
-# 2. Run OSINT Search Engine
-./run-robin.sh          # UI on http://127.0.0.1:8501
+# ==============================================================================
+# 2. Launch Nested Double-Sandbox Tor Browser & Auto-Sentry (Layers 4 & 5)
+# ==============================================================================
+./run-tor-browser.sh
+# Firejail outer sandbox wraps Tor Browser; auto_sanitizer.py monitors downloads.
 
-# 3. Verify Dark Web Claims
-./run-tor-browser.sh    # Launches private Firejail sandbox
+# ==============================================================================
+# 3. Disinfect Downloaded Payloads (Layer 5)
+# ==============================================================================
+# Automatic: auto_sanitizer.py quarantines dangerous originals and runs defanging.
+# Manual (if needed):
+./sanitize-file.sh ~/Downloads/threat_actor_dump.xlsx
+./view-in-sandbox.sh ~/investigations/quarantine/sample.pdf
 
-# 4. Record Evidence Artifacts
-./log-evidence.sh screenshot.png KPI-007 "Database breach claim on BreachForums"
+# ==============================================================================
+# 4. Record Evidence Integrity (Layer 6)
+# ==============================================================================
+./log-evidence.sh threat_actor_dump-safe.pdf KPI-018 "Verified threat actor breach claim"
 
-# 5. End Session Cleanly
+# ==============================================================================
+# 5. Clean Session Teardown
+# ==============================================================================
 ./stop-tor-browser.sh
-./stop-robin.sh
 ./vpn/project-vpn-off.sh
 ```

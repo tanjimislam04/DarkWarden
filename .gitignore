@@ -183,3 +183,5 @@ investigations/
 *.tgz
 *.tar.gz
 Dark_Hunt/
+@*.txt
+team nullx*
