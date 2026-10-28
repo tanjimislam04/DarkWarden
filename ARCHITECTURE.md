@@ -4,8 +4,6 @@
 **Target:** 45 Key Point Installations (KPIs) of Bangladesh  
 **Department:** Department of Software Engineering · Daffodil International University (DIU)  
 **Lead Author & Architect:** Md. Tanjim Islam (Tanjim_islam)  
-**Project Team:** Team NullX (Rahat Sahriar Rafi, Md. Tanjim Islam, MD RAKIB HASAN APON)  
-**Advisory / Sponsor:** Tanvir Hassan Zoha  
 
 ---
 

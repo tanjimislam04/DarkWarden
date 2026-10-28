@@ -11,8 +11,6 @@
 
 **Department of Software Engineering · Daffodil International University (DIU)**  
 *Lead Author & Architect:* **Md. Tanjim Islam (Tanjim_islam)**  
-*Project Team:* **Team NullX (Rahat Sahriar Rafi, Md. Tanjim Islam, MD RAKIB HASAN APON)**  
-*Advisory / Sponsor:* **Tanvir Hassan Zoha**
 
 [Access Architecture](#-1-how-to-safely-access-the-dark-web-traffic-routing--identity-obfuscation) •
 [Tor Mechanics](#-2-tor-routing-obfs4-obfuscation--socks5-architecture) •
@@ -45,7 +43,7 @@
 - [5. Daily Operational Workflow (Standard Operating Procedure)](#-5-daily-operational-workflow-standard-operating-procedure)
 - [6. Cryptographic Evidence Integrity (Chain of Custody)](#-6-cryptographic-evidence-integrity-chain-of-custody)
 - [7. Repository File Structure](#-7-repository-file-structure)
-- [8. Team Roles & Ethical Rules of Engagement](#-8-team-roles--ethical-rules-of-engagement)
+- [8. Ethical Rules of Engagement (ROE)](#-8-ethical-rules-of-engagement-roe)
 
 ---
 
@@ -393,16 +391,8 @@ For dark-web intelligence to be admissible in legal or law-enforcement contexts,
 
 ---
 
-## 👥 8. Team Roles & Ethical Rules of Engagement
+## ⚖️ 8. Ethical Rules of Engagement (ROE)
 
-### 8.1 Team Roles & KPI Assignments
-| Member | Academic Institution | Responsibilities | Assigned Cohort |
-| :--- | :--- | :--- | :--- |
-| **Rahat Sahriar Rafi** | Dept of SWE, DIU | Team Lead, Gantt Plan, MikroTik Gateway, Risk Language | **Cohort A (KPI 001–015)** |
-| **Md. Tanjim Islam** | Dept of SWE, DIU | Lead Author, Layer 4 Privacy SOP, Web Dashboard, Sanitization Architecture | **Cohort B (KPI 016–030)** |
-| **MD RAKIB HASAN APON** | Dept of SWE, DIU | Evidence Verification, Credibility Scoring, Dangerzone Pipeline | **Cohort C (KPI 031–045)** |
-
-### 8.2 Strict Rules of Engagement (ROE)
 1. **Passive Lawful Observation Only:** Research is strictly confined to publicly claimed and passively observable breach announcements.
 2. **Absolute Prohibition on Active Attacks:** No vulnerability scanning, port scanning, or DoS testing against any dark web or victim infrastructure.
 3. **Zero Credential Testing:** Never attempt to authenticate into third-party or government systems using leaked credentials.
