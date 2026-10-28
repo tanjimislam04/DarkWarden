@@ -322,7 +322,7 @@ cd ~/robin
 # ==============================================================================
 # STEP 5: RECORD CRYPTOGRAPHIC EVIDENCE (LAYER 6)
 # ==============================================================================
-./log-evidence.sh sample-safe.pdf KPI-018 "Verified threat actor breach claim"
+./log-evidence.sh sample-safe.pdf CASE-001 "Verified dark web breach claim"
 # [Verification]: Calculates SHA-256 and appends entry to investigations/evidence_ledger.csv.
 
 # ==============================================================================
@@ -341,8 +341,8 @@ For dark-web intelligence to be admissible in legal or law-enforcement contexts,
 
 1. **Immutable SHA-256 Ledger:** Whenever an artifact is captured, `./log-evidence.sh` computes its cryptographic SHA-256 hash and appends it to `investigations/evidence_ledger.csv`:
    ```csv
-   Timestamp,Artifact_Name,SHA256_Hash,KPI_Tag,Investigator_Notes
-   2026-10-20T06:15:22Z,leak_dump-safe.pdf,a8f5b2c...,KPI-018,"Breach claim verified"
+   Timestamp,Case_Tag,Filename,SHA256_Hash,Investigator_Notes
+   2026-10-20T06:15:22Z,CASE-001,leak_dump-safe.pdf,a8f5b2c...,"Breach claim verified"
    ```
 2. **Quarantine Isolation:** Hazardous original files are permanently moved to `investigations/quarantine/` with execution permissions removed (`chmod -x`).
 3. **Reproducibility:** Any external auditor can re-compute the hash of the preserved artifact to prove it was never tampered with or altered post-collection.
@@ -378,7 +378,7 @@ For dark-web intelligence to be admissible in legal or law-enforcement contexts,
 │   ├── evidence/                                 # Persistent SHA-256 & GPG verified artifact repository
 │   │   ├── evidence_ledger.csv                   # Immutable investigation audit ledger
 │   │   ├── evidence_ledger.csv.asc               # GPG Detached Armored Digital Signature
-│   │   └── team_nullx_public_key.asc             # Public GPG key for court / team verification
+│   │   └── investigator_public_key.asc           # Public GPG key for court / evaluator verification
 │   └── evidence_ledger.csv                       # Symlink to evidence/evidence_ledger.csv
 └── vpn/
     ├── project-vpn-on.sh                         # VPN connect & airtight UFW killswitch activation

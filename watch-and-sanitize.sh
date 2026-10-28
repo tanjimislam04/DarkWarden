@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
-# Project Dark Hunt — Manage Layer 5 Real-Time Auto-Sanitizer Sentry
-# Team NullX · Department of SWE, DIU
+# Safe Dark Web Access — Manage Real-Time Auto-Sanitizer Sentry
+# Department of Software Engineering, DIU
 set -euo pipefail
 cd "$(dirname "$0")"
 
@@ -22,7 +22,7 @@ start() {
     exit 0
   fi
 
-  echo "==> Starting Project Dark Hunt Auto-Sanitizer Sentry in background..."
+  echo "==> Starting Safe Dark Web Auto-Sanitizer Sentry in background..."
   nohup python3 auto_sanitizer.py >/dev/null 2>&1 &
   echo $! > "$PID_FILE"
   sleep 1

@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
-# Project Dark Hunt — Permanent IPv6 Leak Blackhole Script
-# Team NullX · Department of Software Engineering, DIU
-# Author: Md. Tanjim Islam & Team NullX
+# Safe Dark Web Access — Permanent IPv6 Leak Blackhole Script
+# Department of Software Engineering, Daffodil International University (DIU)
+# Author: Md. Tanjim Islam (tanjimislam04)
 set -euo pipefail
 
 echo "=========================================================="
-echo "  Project Dark Hunt — Permanent IPv6 Blackhole Setup"
+echo "  Safe Dark Web Access — Permanent IPv6 Blackhole Setup"
 echo "=========================================================="
 
 if [ "$(id -u)" -ne 0 ]; then
@@ -19,7 +19,7 @@ fi
 
 echo "[*] Writing permanent IPv6 blackhole configuration to /etc/sysctl.d/99-disable-ipv6.conf..."
 cat <<'EOF' > /etc/sysctl.d/99-disable-ipv6.conf
-# Team NullX — Disable IPv6 completely to prevent cleartext VPN bypass
+# Disable IPv6 completely to prevent cleartext VPN bypass
 net.ipv6.conf.all.disable_ipv6 = 1
 net.ipv6.conf.default.disable_ipv6 = 1
 net.ipv6.conf.lo.disable_ipv6 = 1

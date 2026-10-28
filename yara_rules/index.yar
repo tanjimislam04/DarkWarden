@@ -1,7 +1,7 @@
 /*
- * Project Dark Hunt — Master YARA Index
- * Team NullX · Department of Software Engineering, DIU
- * Author: Md. Tanjim Islam & Team NullX
+ * Safe Dark Web Access — Master YARA Index
+ * Department of Software Engineering, Daffodil International University (DIU)
+ * Author: Md. Tanjim Islam (tanjimislam04)
  */
 
 include "infostealers.yar"

@@ -1,15 +1,15 @@
 #!/usr/bin/env bash
-# Project Dark Hunt — Investigator GPG Key Generator & Exporter
-# Team NullX · Department of Software Engineering, DIU
-# Author: Md. Tanjim Islam & Team NullX
+# Safe Dark Web Access — Investigator GPG Key Generator & Exporter
+# Department of Software Engineering, Daffodil International University (DIU)
+# Author: Md. Tanjim Islam (tanjimislam04)
 set -euo pipefail
 
 KEY_NAME="${1:-Md. Tanjim Islam}"
 KEY_EMAIL="${2:-islamtanjim2004@gmail.com}"
-KEY_COMMENT="Team NullX Threat Intelligence Custody Key"
+KEY_COMMENT="Safe Dark Web Defense & Evidence Key"
 
 echo "=========================================================="
-echo "  Project Dark Hunt — Investigator GPG Key Initialization"
+echo "  Safe Dark Web Access — Investigator GPG Key Initialization"
 echo "=========================================================="
 
 # Check if key already exists
@@ -45,9 +45,9 @@ FINGERPRINT=$(gpg --fingerprint "$KEY_EMAIL" 2>/dev/null | awk '/Key fingerprint
 mkdir -p investigations/evidence
 
 # Export public key for court / team / evaluator verification
-PUBKEY_PATH="investigations/evidence/team_nullx_public_key.asc"
+PUBKEY_PATH="investigations/evidence/investigator_public_key.asc"
 gpg --armor --export "$KEY_EMAIL" > "$PUBKEY_PATH"
-cp "$PUBKEY_PATH" "investigations/team_nullx_public_key.asc" 2>/dev/null || true
+cp "$PUBKEY_PATH" "investigations/investigator_public_key.asc" 2>/dev/null || true
 
 echo "----------------------------------------------------------"
 echo "[+] Key ID:       $KEY_ID"

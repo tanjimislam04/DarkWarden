@@ -1,7 +1,7 @@
 # Safe Dark Web Access & Threat Intelligence Disinfection Architecture
 
 **Classification:** Lawful Cyber Exposure & Dark Web Threat Intelligence  
-**Target:** 45 Key Point Installations (KPIs) of Bangladesh  
+**Scope:** Host System Protection, Tor Anonymity, Anti-Forensics & Untrusted Payload Disinfection  
 **Department:** Department of Software Engineering · Daffodil International University (DIU)  
 **Lead Author & Architect:** Md. Tanjim Islam (Tanjim_islam)  
 
@@ -109,7 +109,7 @@
 │   ├── evidence/                    ← Persistent SHA-256 & GPG verified artifact repository
 │   │   ├── evidence_ledger.csv      ← Immutable audit ledger
 │   │   ├── evidence_ledger.csv.asc  ← GPG Detached Armored Digital Signature
-│   │   └── team_nullx_public_key.asc← Public GPG key for court / team verification
+│   │   └── investigator_public_key.asc← Public GPG key for court / evaluator verification
 │   └── evidence_ledger.csv          ← Symlink to evidence/evidence_ledger.csv
 └── vpn/
     ├── project-vpn-on.sh            ← Starts VPN + pins airtight UFW killswitch
@@ -150,7 +150,7 @@ cd ~/robin
 # ==============================================================================
 # 4. Record Evidence Integrity (Layer 6)
 # ==============================================================================
-./log-evidence.sh threat_actor_dump-safe.pdf KPI-018 "Verified threat actor breach claim"
+./log-evidence.sh threat_actor_dump-safe.pdf CASE-001 "Verified dark web breach claim"
 
 # ==============================================================================
 # 5. Clean Session Teardown

@@ -1,17 +1,17 @@
 #!/usr/bin/env bash
-# Project Dark Hunt — Cryptographic Evidence Integrity & GPG Logger
-# Team NullX · Department of Software Engineering, DIU
-# Author: Md. Tanjim Islam & Team NullX
+# Safe Dark Web Access — Cryptographic Evidence Integrity & GPG Logger
+# Department of Software Engineering, Daffodil International University (DIU)
+# Author: Md. Tanjim Islam (tanjimislam04)
 set -euo pipefail
 
 if [ "$#" -lt 1 ]; then
-  echo "Usage: ./log-evidence.sh <file_or_screenshot> [KPI-ID] [Optional note]"
-  echo "Example: ./log-evidence.sh sample-safe.pdf KPI-018 'Verified threat actor breach claim'"
+  echo "Usage: ./log-evidence.sh <file_or_screenshot> [CASE-ID/TAG] [Optional note]"
+  echo "Example: ./log-evidence.sh sample-safe.pdf CASE-001 'Verified threat actor breach claim'"
   exit 1
 fi
 
 FILE="$1"
-KPI_ID="${2:-KPI-UNASSIGNED}"
+CASE_TAG="${2:-CASE-001}"
 NOTE="${3:-No description provided}"
 
 if [ ! -f "$FILE" ]; then
@@ -25,20 +25,20 @@ mkdir -p "$EVIDENCE_DIR"
 
 # Initialize CSV ledger if missing
 if [ ! -f "$LEDGER" ]; then
-  echo "Timestamp,KPI_ID,Filename,SHA256,Note" > "$LEDGER"
+  echo "Timestamp,Case_Tag,Filename,SHA256,Note" > "$LEDGER"
 fi
 
 TIMESTAMP="$(date -u +"%Y-%m-%dT%H:%M:%SZ")"
 BASENAME="$(basename "$FILE")"
 CLEAN_TIMESTAMP="$(echo "$TIMESTAMP" | tr -d ':-')"
-TARGET_FILE="$EVIDENCE_DIR/${KPI_ID}_${CLEAN_TIMESTAMP}_${BASENAME}"
+TARGET_FILE="$EVIDENCE_DIR/${CASE_TAG}_${CLEAN_TIMESTAMP}_${BASENAME}"
 
 # Copy file into preserved evidence directory
 cp "$FILE" "$TARGET_FILE"
 HASH="$(sha256sum "$TARGET_FILE" | awk '{print $1}')"
 
 # Append record to immutable ledger
-echo "\"$TIMESTAMP\",\"$KPI_ID\",\"$(basename "$TARGET_FILE")\",\"$HASH\",\"$NOTE\"" >> "$LEDGER"
+echo "\"$TIMESTAMP\",\"$CASE_TAG\",\"$(basename "$TARGET_FILE")\",\"$HASH\",\"$NOTE\"" >> "$LEDGER"
 
 # Cryptographic GPG Detached Signing (Non-Repudiation)
 SIGNER_EMAIL="islamtanjim2004@gmail.com"

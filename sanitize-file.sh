@@ -31,7 +31,7 @@ EXT="${BASENAME##*.}"
 EXT_LOWER=$(echo "$EXT" | tr '[:upper:]' '[:lower:]')
 
 echo "=========================================================="
-echo "  Project Dark Hunt — Layer 5 Anti-Malware Triage & Sanitizer"
+echo "  Safe Dark Web Access — Anti-Malware Triage & Sanitizer"
 echo "=========================================================="
 echo "[*] Target File:   $INPUT_FILE"
 ORIG_HASH=$(sha256sum "$INPUT_FILE" | awk '{print $1}')
@@ -288,6 +288,6 @@ elif [ -d "$SAFE_FILE" ]; then
 fi
 echo "=========================================================="
 echo "Next step: Log this finding into the cryptographic evidence ledger:"
-echo "  ./log-evidence.sh \"$SAFE_FILE\" KPI-XXX \"Sanitized proof description\""
+echo "  ./log-evidence.sh \"$SAFE_FILE\" CASE-001 \"Sanitized proof description\""
 echo "To safely inspect in disposable Docker sandbox: ./view-in-sandbox.sh \"$SAFE_FILE\""
 echo "=========================================================="

@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
-# Project Dark Hunt — Automated Killswitch Leak & Security Verification Tool
-# Team NullX · Department of Software Engineering, DIU
-# Author: Md. Tanjim Islam & Team NullX
+# Safe Dark Web Access — Automated Killswitch Leak & Security Verification Tool
+# Department of Software Engineering, Daffodil International University (DIU)
+# Author: Md. Tanjim Islam (tanjimislam04)
 set -euo pipefail
 
 echo "=========================================================="
-echo "  Project Dark Hunt — Live Killswitch Security Audit"
+echo "  Safe Dark Web Access — Live Killswitch Security Audit"
 echo "=========================================================="
 
 vpn_iface_up() {

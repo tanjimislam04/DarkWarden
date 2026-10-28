@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
-# Project Dark Hunt — Volatile RAM-backed Anti-Forensics Storage Controller
-# Team NullX · Department of Software Engineering, DIU
-# Author: Md. Tanjim Islam & Team NullX
+# Safe Dark Web Access — Volatile RAM-backed Anti-Forensics Controller
+# Department of Software Engineering, Daffodil International University (DIU)
+# Author: Md. Tanjim Islam (tanjimislam04)
 set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
@@ -27,7 +27,7 @@ is_tmpfs() {
 
 mount_ramdisk() {
   echo "=========================================================="
-  echo "  Project Dark Hunt — Activating Volatile RAM Storage"
+  echo "  Safe Dark Web Access — Activating Volatile RAM Storage"
   echo "=========================================================="
 
   mkdir -p "$QUARANTINE_DIR" "$DOWNLOADS_DIR"
@@ -94,7 +94,7 @@ wipe_ramdisk() {
 
 unmount_ramdisk() {
   echo "=========================================================="
-  echo "  Project Dark Hunt — Teardown Volatile RAM Storage"
+  echo "  Safe Dark Web Access — Teardown Volatile RAM Storage"
   echo "=========================================================="
   wipe_ramdisk
 
@@ -129,7 +129,7 @@ unmount_ramdisk() {
 
 status_ramdisk() {
   echo "=========================================================="
-  echo "  Project Dark Hunt — RAM Storage Status"
+  echo "  Safe Dark Web Access — RAM Storage Status"
   echo "=========================================================="
   if is_tmpfs "$QUARANTINE_DIR"; then
     echo "[✓] Quarantine Status: ACTIVE IN RAM (tmpfs)"

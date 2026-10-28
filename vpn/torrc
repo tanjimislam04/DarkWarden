@@ -1,4 +1,4 @@
-# Robin Tor config with obfs4 bridges (Team NullX)
+# Tor config with obfs4 bridges for Safe Dark Web Access
 # Used by entrypoint when this file is present at /app/vpn/torrc
 
 SocksPort 9050

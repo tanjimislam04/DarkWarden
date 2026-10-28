@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
-# Project Dark Hunt — Start Sandboxed Tor Browser
-# Team NullX
+# Safe Dark Web Access — Start Sandboxed Tor Browser
+# Safe Dark Web Access & Defense Architecture
 set -euo pipefail
 
 vpn_iface_up() {
@@ -8,7 +8,7 @@ vpn_iface_up() {
 }
 
 echo "=========================================================="
-echo "  Project Dark Hunt — Launching Tor Browser"
+echo "  Safe Dark Web Access — Launching Hardened Tor Browser"
 echo "=========================================================="
 
 # 1. Hard VPN check: Never start Tor Browser without VPN

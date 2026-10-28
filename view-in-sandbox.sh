@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
-# Project Dark Hunt — Layer 5 Solution 3: Disposable Docker Sandbox Viewer
-# Team NullX · Department of Software Engineering, DIU
-# Author: Md. Tanjim Islam & Team NullX
+# Safe Dark Web Access — Disposable Docker Sandbox Viewer
+# Department of Software Engineering, Daffodil International University (DIU)
+# Author: Md. Tanjim Islam (tanjimislam04)
 set -euo pipefail
 
 if [ $# -lt 1 ]; then
@@ -23,7 +23,7 @@ ABS_PATH=$(realpath "$TARGET_FILE")
 BASENAME=$(basename "$ABS_PATH")
 
 echo "=========================================================="
-echo "  Project Dark Hunt — Disposable Sandbox Viewer (Solution 3)"
+echo "  Safe Dark Web Access — Disposable Sandbox Viewer"
 echo "=========================================================="
 echo "[*] Inspecting: $BASENAME"
 echo "[*] Absolute:   $ABS_PATH"

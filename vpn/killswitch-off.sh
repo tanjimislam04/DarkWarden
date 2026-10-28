@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
-# Project Dark Hunt — Emergency Killswitch Unlock
-# Team NullX
+# Safe Dark Web Access — Emergency Killswitch Unlock
+# Safe Dark Web Access & Defense Architecture
 set -euo pipefail
 
 if [ "$(id -u)" -ne 0 ]; then

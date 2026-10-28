@@ -1,16 +1,17 @@
 #!/usr/bin/env bash
-# Project Dark Hunt — Cryptographic Evidence Integrity & GPG Signature Verifier
-# Team NullX · Department of Software Engineering, DIU
-# Author: Md. Tanjim Islam & Team NullX
+# Safe Dark Web Access — Cryptographic Evidence Integrity & GPG Verifier
+# Department of Software Engineering, Daffodil International University (DIU)
+# Author: Md. Tanjim Islam (tanjimislam04)
 set -euo pipefail
 
 EVIDENCE_DIR="investigations/evidence"
 LEDGER="$EVIDENCE_DIR/evidence_ledger.csv"
 LEDGER_SIG="$LEDGER.asc"
-PUBKEY="$EVIDENCE_DIR/team_nullx_public_key.asc"
+PUBKEY="$EVIDENCE_DIR/investigator_public_key.asc"
+[ ! -f "$PUBKEY" ] && [ -f "$EVIDENCE_DIR/team_nullx_public_key.asc" ] && PUBKEY="$EVIDENCE_DIR/team_nullx_public_key.asc"
 
 echo "=========================================================="
-echo "  Project Dark Hunt — Cryptographic Evidence Audit Tool"
+echo "  Safe Dark Web Access — Cryptographic Evidence Audit Tool"
 echo "=========================================================="
 
 if [ ! -f "$LEDGER" ]; then
@@ -48,10 +49,10 @@ MATCHED=0
 FAILED=0
 
 # Read CSV skipping header
-while IFS=, read -r timestamp kpi_id filename sha256 note; do
+while IFS=, read -r timestamp case_tag filename sha256 note; do
   # Remove quotes
   timestamp=$(echo "$timestamp" | tr -d '"')
-  kpi_id=$(echo "$kpi_id" | tr -d '"')
+  case_tag=$(echo "$case_tag" | tr -d '"')
   filename=$(echo "$filename" | tr -d '"')
   sha256=$(echo "$sha256" | tr -d '"')
   note=$(echo "$note" | tr -d '"')
@@ -74,10 +75,10 @@ while IFS=, read -r timestamp kpi_id filename sha256 note; do
     if [ -f "$FILEPATH.asc" ] && gpg --verify "$FILEPATH.asc" "$FILEPATH" >/dev/null 2>&1; then
       SIG_FLAG=" [GPG-Verified]"
     fi
-    echo "    [✓] $kpi_id: $filename -> MATCH$SIG_FLAG"
+    echo "    [✓] $case_tag: $filename -> MATCH$SIG_FLAG"
     MATCHED=$((MATCHED + 1))
   else
-    echo "    [✗] $kpi_id: $filename -> HASH MISMATCH!"
+    echo "    [✗] $case_tag: $filename -> HASH MISMATCH!"
     echo "        Expected: $sha256"
     echo "        Actual:   $ACTUAL_HASH"
     FAILED=$((FAILED + 1))

@@ -1,7 +1,7 @@
 /*
- * Project Dark Hunt — Ransomware & Extortion Notes YARA Rules
- * Team NullX · Department of Software Engineering, DIU
- * Author: Md. Tanjim Islam & Team NullX
+ * Safe Dark Web Access — Ransomware & Extortion Notes YARA Rules
+ * Department of Software Engineering, Daffodil International University (DIU)
+ * Author: Md. Tanjim Islam (tanjimislam04)
  */
 
 rule LockBit_Ransom_Note {
@@ -9,7 +9,7 @@ rule LockBit_Ransom_Note {
         description = "LockBit 2.0 / 3.0 (LockBit Black) ransom demand note"
         threat_category = "Ransomware"
         severity = "CRITICAL"
-        author = "Team NullX"
+        author = "Md. Tanjim Islam"
     strings:
         $lb1 = "LockBit" ascii wide nocase
         $lb2 = "Restore-My-Files.txt" ascii wide nocase
@@ -25,7 +25,7 @@ rule BlackCat_ALPHV_Note {
         description = "BlackCat / ALPHV Ransomware negotiation note"
         threat_category = "Ransomware"
         severity = "CRITICAL"
-        author = "Team NullX"
+        author = "Md. Tanjim Islam"
     strings:
         $alphv1 = "ALPHV" ascii wide nocase
         $alphv2 = "BlackCat" ascii wide nocase
@@ -41,7 +41,7 @@ rule Akira_Ransom_Note {
         description = "Akira Ransomware victim instruction note"
         threat_category = "Ransomware"
         severity = "CRITICAL"
-        author = "Team NullX"
+        author = "Md. Tanjim Islam"
     strings:
         $akira1 = "akira_readme.txt" ascii wide nocase
         $akira2 = "akira" ascii wide nocase
@@ -56,7 +56,7 @@ rule Generic_DarkWeb_Extortion_Note {
         description = "Generic Dark Web Ransomware / Double Extortion Demand"
         threat_category = "Ransomware"
         severity = "HIGH"
-        author = "Team NullX"
+        author = "Md. Tanjim Islam"
     strings:
         $extort1 = "your files are encrypted" ascii wide nocase
         $extort2 = "all your data has been encrypted" ascii wide nocase

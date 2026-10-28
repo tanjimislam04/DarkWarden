@@ -1,13 +1,13 @@
 #!/usr/bin/env bash
-# Project Dark Hunt — Tor Browser Clipboard & Anti-Snooping Hardener
-# Team NullX · Department of Software Engineering, DIU
-# Author: Md. Tanjim Islam & Team NullX
+# Safe Dark Web Access — Tor Browser Clipboard & Anti-Snooping Hardener
+# Department of Software Engineering, Daffodil International University (DIU)
+# Author: Md. Tanjim Islam (tanjimislam04)
 set -euo pipefail
 
 TOR_PROFILE_DIR="$HOME/.local/share/torbrowser/tbb/x86_64/tor-browser/Browser/TorBrowser/Data/Browser/profile.default"
 
 echo "=========================================================="
-echo "  Project Dark Hunt — Clipboard & Anti-Snooping Hardening"
+echo "  Safe Dark Web Access — Clipboard & Anti-Snooping Hardening"
 echo "=========================================================="
 
 if [ ! -d "$TOR_PROFILE_DIR" ]; then

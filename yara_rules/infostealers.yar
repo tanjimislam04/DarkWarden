@@ -1,7 +1,7 @@
 /*
- * Project Dark Hunt — Infostealer Log & Dump YARA Rules
- * Team NullX · Department of Software Engineering, DIU
- * Author: Md. Tanjim Islam & Team NullX
+ * Safe Dark Web Access — Infostealer Log & Dump YARA Rules
+ * Department of Software Engineering, Daffodil International University (DIU)
+ * Author: Md. Tanjim Islam (tanjimislam04)
  */
 
 rule LummaStealer_LogFormat {
@@ -9,7 +9,7 @@ rule LummaStealer_LogFormat {
         description = "Lumma Stealer C2 extracted credentials / log directory artifact"
         threat_category = "Infostealer"
         severity = "HIGH"
-        author = "Team NullX"
+        author = "Md. Tanjim Islam"
     strings:
         $lumma1 = "LummaC2" ascii wide nocase
         $lumma2 = "Lumma Stealer" ascii wide nocase
@@ -27,7 +27,7 @@ rule RedlineStealer_LogFormat {
         description = "RedLine Infostealer victim dump structure"
         threat_category = "Infostealer"
         severity = "HIGH"
-        author = "Team NullX"
+        author = "Md. Tanjim Islam"
     strings:
         $redline1 = "RedLine" ascii wide
         $redline2 = "User Data.txt" ascii wide
@@ -45,7 +45,7 @@ rule Vidar_Stealer_Dump {
         description = "Vidar / Oski stealer credential archive"
         threat_category = "Infostealer"
         severity = "HIGH"
-        author = "Team NullX"
+        author = "Md. Tanjim Islam"
     strings:
         $vidar1 = "information.txt" ascii wide
         $vidar2 = "passwords.txt" ascii wide
@@ -63,7 +63,7 @@ rule Raccoon_Stealer_Output {
         description = "Raccoon Stealer v2 log archive structure"
         threat_category = "Infostealer"
         severity = "HIGH"
-        author = "Team NullX"
+        author = "Md. Tanjim Islam"
     strings:
         $raccoon1 = "Raccoon" ascii wide nocase
         $raccoon2 = "System Info.txt" ascii wide
@@ -79,7 +79,7 @@ rule Stealc_Data_Archive {
         description = "Stealc Infostealer credential dump structure"
         threat_category = "Infostealer"
         severity = "HIGH"
-        author = "Team NullX"
+        author = "Md. Tanjim Islam"
     strings:
         $stealc1 = "Stealc" ascii wide nocase
         $stealc2 = "passwords.txt" ascii wide

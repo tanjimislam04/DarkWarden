@@ -1,7 +1,7 @@
 /*
- * Project Dark Hunt — Credential & Database Leak YARA Rules
- * Team NullX · Department of Software Engineering, DIU
- * Author: Md. Tanjim Islam & Team NullX
+ * Safe Dark Web Access — Credential & Database Leak YARA Rules
+ * Department of Software Engineering, Daffodil International University (DIU)
+ * Author: Md. Tanjim Islam (tanjimislam04)
  */
 
 rule Exposed_Private_RSA_Key {
@@ -9,7 +9,7 @@ rule Exposed_Private_RSA_Key {
         description = "Unencrypted Private RSA / SSH / EC Cryptographic Key"
         threat_category = "Credential_Leak"
         severity = "HIGH"
-        author = "Team NullX"
+        author = "Md. Tanjim Islam"
     strings:
         $k1 = "-----BEGIN RSA PRIVATE KEY-----" ascii
         $k2 = "-----BEGIN OPENSSH PRIVATE KEY-----" ascii
@@ -24,7 +24,7 @@ rule Database_SQL_Dump_Format {
         description = "Database structure dump (MySQL, PostgreSQL, Oracle, MSSQL)"
         threat_category = "Database_Leak"
         severity = "MEDIUM"
-        author = "Team NullX"
+        author = "Md. Tanjim Islam"
     strings:
         $mysql = "-- MySQL dump" ascii wide
         $pg = "-- PostgreSQL database dump" ascii wide
@@ -39,7 +39,7 @@ rule Environment_Secrets_Leak {
         description = "Exposed environment configuration file (.env) with secrets"
         threat_category = "Credential_Leak"
         severity = "HIGH"
-        author = "Team NullX"
+        author = "Md. Tanjim Islam"
     strings:
         $db_pass = /DB_PASSWORD\s*=\s*[^\s]+/ ascii
         $api_key = /API_KEY\s*=\s*[^\s]+/ ascii

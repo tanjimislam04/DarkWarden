@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
-# Project Dark Hunt — Install Dangerzone & Anti-Malware Tools (Layer 5)
-# Team NullX · Department of SWE, DIU
+# Safe Dark Web Access — Install Dangerzone & File Disinfection Tools
+# Department of Software Engineering, DIU
 set -euo pipefail
 
 echo "=========================================================="
-echo "  Project Dark Hunt — Layer 5 Dangerzone Installer"
+echo "  Safe Dark Web Access — File Disinfection Tools Installer"
 echo "=========================================================="
 
 if command -v dangerzone-cli >/dev/null 2>&1 || command -v dangerzone >/dev/null 2>&1; then

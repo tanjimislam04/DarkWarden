@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
-# Project Dark Hunt — Check obfs4 Bridge Reachability
-# Team NullX · Department of SWE, DIU
+# Safe Dark Web Access — Check obfs4 Bridge Reachability
+# Department of Software Engineering, DIU
 set -euo pipefail
 
 cd "$(dirname "$0")/.."
@@ -8,7 +8,7 @@ cd "$(dirname "$0")/.."
 TORRC="vpn/torrc"
 
 echo "=========================================================="
-echo "  Project Dark Hunt — obfs4 Bridge Connectivity Check"
+echo "  Safe Dark Web Access — obfs4 Bridge Connectivity Check"
 echo "=========================================================="
 
 if [ ! -f "$TORRC" ]; then

@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
-# Project Dark Hunt — Stop Firejail Tor Browser
-# Team NullX
+# Safe Dark Web Access — Stop Firejail Tor Browser
+# Safe Dark Web Access & Defense Architecture
 set -euo pipefail
 
 echo "==> Closing Firejail Tor Browser session..."

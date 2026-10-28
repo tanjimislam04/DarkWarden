@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
-# Project Dark Hunt — Start VPN & Activate Airtight Host Killswitch
-# Team NullX · Department of Software Engineering, DIU
-# Author: Md. Tanjim Islam & Team NullX
+# Safe Dark Web Access — Start VPN & Activate Airtight Host Killswitch
+# Department of Software Engineering, Daffodil International University (DIU)
+# Author: Md. Tanjim Islam (tanjimislam04)
 set -euo pipefail
 
 vpn_iface_up() {
@@ -30,7 +30,7 @@ get_vpn_endpoint_ip() {
 }
 
 echo "=========================================================="
-echo "  Project Dark Hunt — Initializing Secure Session"
+echo "  Safe Dark Web Access — Initializing Secure Session"
 echo "=========================================================="
 
 # 1. First attempt: Connect Proton VPN in user space if not already active

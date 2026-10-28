@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """
-Project Dark Hunt — Automated Layer 5 Real-Time Download Sanitizer & Sentry
-Team NullX · Department of Software Engineering, DIU
-Author: Md. Tanjim Islam & Team NullX
+Safe Dark Web Access — Automated Real-Time Download Sanitizer & Sentry
+Department of Software Engineering, Daffodil International University (DIU)
+Author: Md. Tanjim Islam (tanjimislam04)
 
 Monitors Downloads and Tor Browser download directories in real-time.
 Whenever an untrusted file finishes downloading:
@@ -39,7 +39,7 @@ def send_alert(title: str, message: str, urgency: str = "critical"):
             "notify-send",
             "-u", urgency,
             "-i", "security-high",
-            "-a", "Project Dark Hunt",
+            "-a", "Safe Dark Web Sentry",
             title,
             message
         ], check=False)
@@ -131,7 +131,7 @@ def sanitize_and_alert(file_path: Path):
             )
             send_alert(alert_title, alert_body, urgency="critical")
         else:
-            alert_title = "🛡️ Project Dark Hunt — File Auto-Sanitized!"
+            alert_title = "🛡️ Safe Dark Web Access — File Auto-Sanitized!"
             alert_body = (
                 f"⚠️ Untrusted Download: {file_path.name}\n"
                 f"✅ Disinfected Sterile File: {safe_name}\n"
@@ -148,7 +148,7 @@ def sanitize_and_alert(file_path: Path):
 
 def main():
     log_event("==========================================================")
-    log_event("  Project Dark Hunt — Real-Time Download Sanitizer Sentry")
+    log_event("  Safe Dark Web Access — Real-Time Download Sanitizer Sentry")
     log_event("==========================================================")
     
     # Ensure watch directories exist
@@ -162,7 +162,7 @@ def main():
             log_event(f"[!] Warning: Could not watch {d}: {e}")
 
     send_alert(
-        "🛡️ Project Dark Hunt Sentry Active",
+        "🛡️ Safe Dark Web Sentry Active",
         "Real-time download sanitizer is watching Downloads. All dark-web files will be auto-sanitized.",
         urgency="low"
     )

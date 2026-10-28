@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
-# Project Dark Hunt — Install Firejail Sandbox (v0.9.80)
-# Team NullX · Department of SWE, DIU
+# Safe Dark Web Access — Install Firejail Sandbox (v0.9.80)
+# Department of Software Engineering, DIU
 set -euo pipefail
 
 echo "=========================================================="
-echo "  Project Dark Hunt — Firejail Sandbox Installer"
+echo "  Safe Dark Web Access — Firejail Sandbox Installer"
 echo "=========================================================="
 
 if command -v firejail >/dev/null 2>&1; then
