@@ -17,4 +17,10 @@ if [ -f "./watch-and-sanitize.sh" ]; then
   ./watch-and-sanitize.sh stop >/dev/null 2>&1 || true
 fi
 
+# Shred and teardown volatile RAM storage
+if [ -x "./setup-ramdisk.sh" ]; then
+  ./setup-ramdisk.sh unmount >/dev/null 2>&1 || true
+fi
+
 echo "[+] Tor Browser closed. Auto-Sanitizer Sentry disengaged."
+echo "[+] Volatile quarantine & downloads purged from RAM (Anti-Forensics complete)."

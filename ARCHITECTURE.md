@@ -56,11 +56,12 @@
  ║                                    ▼                                             ║
  ║   ┌────────────────────────────────────────────────────────────────────────┐     ║
  ║   │ LAYER 5: PAYLOAD DISINFECTION & SENTRY (Auto-Sanitizer Daemon)         │     ║
+ ║   │ • Volatile RAM Storage (setup-ramdisk.sh: zero physical disk writes)   │     ║
  ║   │ • Real-Time Inotify Download Watcher (auto_sanitizer.py)               │     ║
  ║   │ • Dangerzone Pixel Flattening (Destroys macros, scripts, font bugs)   │     ║
  ║   │ • CSV Formula Defanging (=cmd|... neutralized with ')                  │     ║
  ║   │ • ExifTool Metadata & Tracker Stripping                                │     ║
- ║   │ • Dangerous original auto-moved to investigations/quarantine/          │     ║
+ ║   │ • Dangerous original auto-quarantined to volatile RAM (tmpfs)          │     ║
  ║   │ • Disposable Zero-Network Docker Viewer (view-in-sandbox.sh)           │     ║
  ║   └────────────────────────────────┬───────────────────────────────────────┘     ║
  ║                                    │                                             ║
@@ -84,6 +85,7 @@
 ├── README.md                        ← Main operational & architectural guide
 ├── SETUP.md                         ← Setup, prerequisites & installation reference
 ├── LICENSE                          ← MIT License
+├── setup-ramdisk.sh                 ← Volatile RAM-backed Anti-Forensics storage controller
 ├── auto_sanitizer.py                ← Real-time inotify download sentry daemon
 ├── watch-and-sanitize.sh            ← Controller for auto_sanitizer.py
 ├── sanitize-file.sh                 ← Universal Anti-Malware File Sanitizer (4 solutions)
@@ -95,10 +97,10 @@
 ├── log-evidence.sh                  ← Cryptographic SHA-256 evidence ledger recorder
 ├── package-toolkit.sh               ← Clean team distribution bundler
 ├── investigations/                  ← Monitored folder, evidence & quarantine
-│   ├── downloads/                   ← Monitored ingestion folder
-│   ├── evidence/                    ← SHA-256 verified artifact repository
-│   ├── evidence_ledger.csv          ← Immutable audit ledger
-│   └── quarantine/                  ← Isolated storage for hazardous originals
+│   ├── downloads/                   ← Volatile RAM-backed ingestion folder (tmpfs)
+│   ├── quarantine/                  ← Volatile RAM-backed isolated storage (tmpfs)
+│   ├── evidence/                    ← Persistent SHA-256 verified artifact repository
+│   └── evidence_ledger.csv          ← Immutable audit ledger
 └── vpn/
     ├── project-vpn-on.sh            ← Starts VPN + pins airtight UFW killswitch
     ├── project-vpn-off.sh           ← Cleanly restores normal network & removes killswitch

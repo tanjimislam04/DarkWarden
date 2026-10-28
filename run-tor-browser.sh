@@ -36,7 +36,12 @@ if [ -z "$TOR_CMD" ]; then
   exit 1
 fi
 
-# 3. Launch with Firejail Double-Layered Sandbox if installed
+# 3. Activate Volatile RAM-backed Anti-Forensics Storage
+if [ -x "./setup-ramdisk.sh" ]; then
+  ./setup-ramdisk.sh mount >/dev/null 2>&1 || true
+fi
+
+# 4. Launch with Firejail Double-Layered Sandbox if installed
 if command -v firejail >/dev/null 2>&1; then
   echo "[+] Launching inside Double-Layered Nested Sandbox:"
   echo "    [1] Outer Wall (Firejail): Host files (~/.ssh, Documents, Desktop) 100% hidden."

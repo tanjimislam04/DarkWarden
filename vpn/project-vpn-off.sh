@@ -34,9 +34,10 @@ if command -v ufw >/dev/null 2>&1; then
   echo "[+] Firewall killswitch deactivated. Outbound traffic restored."
 fi
 
-# Restore IPv6
-sysctl -w net.ipv6.conf.all.disable_ipv6=0 >/dev/null 2>&1 || true
-sysctl -w net.ipv6.conf.default.disable_ipv6=0 >/dev/null 2>&1 || true
+# Keep IPv6 disabled for permanent zero-leak protection
+sysctl -w net.ipv6.conf.all.disable_ipv6=1 >/dev/null 2>&1 || true
+sysctl -w net.ipv6.conf.default.disable_ipv6=1 >/dev/null 2>&1 || true
+sysctl -w net.ipv6.conf.lo.disable_ipv6=1 >/dev/null 2>&1 || true
 
 # 4. Force-disconnect any remaining Proton VPN connections in NetworkManager
 if command -v nmcli >/dev/null 2>&1; then

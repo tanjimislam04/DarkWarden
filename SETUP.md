@@ -114,11 +114,12 @@ All outbound and inbound operations flow through six strictly isolated defense t
  ║                                    ▼                                             ║
  ║   ┌────────────────────────────────────────────────────────────────────────┐     ║
  ║   │ LAYER 5: PAYLOAD DISINFECTION & SENTRY (Auto-Sanitizer Daemon)         │     ║
+ ║   │ • Volatile RAM Storage (setup-ramdisk.sh: zero physical disk writes)   │     ║
  ║   │ • Real-Time Inotify Download Watcher (auto_sanitizer.py)               │     ║
  ║   │ • Dangerzone Pixel Flattening (Destroys macros, scripts, font bugs)   │     ║
  ║   │ • CSV Formula Defanging (=cmd|... neutralized with ')                  │     ║
  ║   │ • ExifTool Metadata & Tracker Stripping                                │     ║
- ║   │ • Dangerous original auto-moved to investigations/quarantine/          │     ║
+ ║   │ • Dangerous original auto-quarantined to volatile RAM (tmpfs)          │     ║
  ║   │ • Disposable Zero-Network Docker Viewer (view-in-sandbox.sh)           │     ║
  ║   └────────────────────────────────┬───────────────────────────────────────┘     ║
  ║                                    │                                             ║
@@ -353,6 +354,7 @@ For dark-web intelligence to be admissible in legal or law-enforcement contexts,
 ├── README.md                                     # Main operational & architectural guide
 ├── SETUP.md                                      # Setup & deployment reference
 ├── LICENSE                                       # Official MIT License
+├── setup-ramdisk.sh                              # Volatile RAM-backed Anti-Forensics storage controller
 ├── auto_sanitizer.py                             # Real-time inotify download sentry daemon
 ├── watch-and-sanitize.sh                         # Controller for auto_sanitizer.py
 ├── sanitize-file.sh                              # Layer 5 Universal Anti-Malware File Sanitizer
@@ -364,10 +366,10 @@ For dark-web intelligence to be admissible in legal or law-enforcement contexts,
 ├── log-evidence.sh                               # SHA-256 cryptographic audit ledger script
 ├── package-toolkit.sh                            # Toolkit packaging script (excludes secrets)
 ├── investigations/
-│   ├── downloads/                                # Monitored ingestion folder
+│   ├── downloads/                                # Volatile RAM-backed ingestion folder (tmpfs)
+│   ├── quarantine/                               # Volatile RAM-backed isolated storage (tmpfs)
 │   ├── evidence/                                 # Cryptographically verified artifacts
-│   ├── evidence_ledger.csv                       # Immutable investigation audit ledger
-│   └── quarantine/                               # Isolated storage for hazardous originals
+│   └── evidence_ledger.csv                       # Immutable investigation audit ledger
 └── vpn/
     ├── project-vpn-on.sh                         # VPN connect & airtight UFW killswitch activation
     ├── project-vpn-off.sh                        # VPN teardown & network restore

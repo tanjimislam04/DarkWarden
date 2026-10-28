@@ -19,6 +19,7 @@ tar --exclude='.env' \
     -czf "$PACKAGE_NAME" \
     run-tor-browser.sh \
     stop-tor-browser.sh \
+    setup-ramdisk.sh \
     sanitize-file.sh \
     view-in-sandbox.sh \
     auto_sanitizer.py \
