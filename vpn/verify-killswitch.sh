@@ -14,19 +14,24 @@ vpn_iface_up() {
 
 # 1. Check VPN Interface
 echo -n "[1] VPN Tunnel Interface: "
+VPN_ACTIVE=0
 if vpn_iface_up; then
   VPN_DEV=$(ip -o link show 2>/dev/null | awk -F': ' '{print $2}' | grep -E '^(tun[0-9]+|proton[0-9]+|wg-proton)' | head -n 1)
   echo "ACTIVE ($VPN_DEV)"
+  VPN_ACTIVE=1
 else
   echo "INACTIVE / DISCONNECTED"
-  echo "    [-] WARNING: VPN is not running. Killswitch cannot protect active session."
-  exit 1
+  echo "    [-] NOTICE: VPN is currently offline."
 fi
 
 # 2. Check UFW Status
 echo -n "[2] Host UFW Killswitch: "
 if command -v ufw >/dev/null 2>&1; then
-  UFW_STATUS=$(sudo ufw status 2>/dev/null | head -n 1 || echo "unknown")
+  if [ "$(id -u)" -eq 0 ]; then
+    UFW_STATUS=$(ufw status 2>/dev/null | head -n 1 || echo "unknown")
+  else
+    UFW_STATUS=$(systemctl is-active ufw 2>/dev/null || echo "unknown")
+  fi
   if [[ "$UFW_STATUS" =~ "active" ]]; then
     echo "ACTIVE & ENFORCING"
   else
