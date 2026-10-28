@@ -118,9 +118,17 @@ done
 # Enable UFW firewall
 ufw --force enable >/dev/null
 
-# 5. Kernel Hardening: Eliminate IPv6 bypass & spoofing
+# 5. Kernel Hardening: Eliminate IPv6 bypass & spoofing (Permanent + Runtime)
+if [ ! -f /etc/sysctl.d/99-disable-ipv6.conf ]; then
+  cat <<'EOF' > /etc/sysctl.d/99-disable-ipv6.conf
+net.ipv6.conf.all.disable_ipv6 = 1
+net.ipv6.conf.default.disable_ipv6 = 1
+net.ipv6.conf.lo.disable_ipv6 = 1
+EOF
+fi
 sysctl -w net.ipv6.conf.all.disable_ipv6=1 >/dev/null 2>&1 || true
 sysctl -w net.ipv6.conf.default.disable_ipv6=1 >/dev/null 2>&1 || true
+sysctl -w net.ipv6.conf.lo.disable_ipv6=1 >/dev/null 2>&1 || true
 sysctl -w net.ipv4.conf.all.rp_filter=1 >/dev/null 2>&1 || true
 sysctl -w net.ipv4.conf.default.rp_filter=1 >/dev/null 2>&1 || true
 
