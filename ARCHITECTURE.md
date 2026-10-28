@@ -82,7 +82,7 @@
 ## 2. Directory Layout
 
 ```text
-~/robin/
+~/darkwarden/
 ├── ARCHITECTURE.md                  ← System blueprint & defense-in-depth model
 ├── README.md                        ← Main operational & architectural guide
 ├── SETUP.md                         ← Setup, prerequisites & installation reference
@@ -128,7 +128,7 @@
 # ==============================================================================
 # 1. Start Encrypted Session & Lock Killswitch (Layer 2)
 # ==============================================================================
-cd ~/robin
+cd ~/darkwarden
 ./vpn/project-vpn-on.sh
 ./vpn/verify-killswitch.sh   # Confirms physical leak is 100% blocked
 ./vpn/check-bridges.sh       # Tests TCP reachability of configured obfs4 bridges

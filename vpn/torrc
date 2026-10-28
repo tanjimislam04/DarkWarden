@@ -2,7 +2,7 @@
 # Used by entrypoint when this file is present at /app/vpn/torrc
 
 SocksPort 9050
-DataDirectory /home/robin/.tor
+DataDirectory ~/.tor
 RunAsDaemon 0
 
 UseBridges 1

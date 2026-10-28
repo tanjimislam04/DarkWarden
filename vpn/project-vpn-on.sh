@@ -86,7 +86,7 @@ ufw default deny forward >/dev/null
 ufw allow in on lo >/dev/null
 ufw allow out on lo >/dev/null
 
-# Allow Docker container bridge (for Robin AI Web UI :8501)
+# Allow Docker container bridge
 ufw allow in on docker0 >/dev/null
 ufw allow out on docker0 >/dev/null
 

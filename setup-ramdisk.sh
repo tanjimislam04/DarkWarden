@@ -7,8 +7,8 @@ set -euo pipefail
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 QUARANTINE_DIR="$SCRIPT_DIR/investigations/quarantine"
 DOWNLOADS_DIR="$SCRIPT_DIR/investigations/downloads"
-SHM_QUARANTINE="/dev/shm/darkhunt-quarantine-${USER}"
-SHM_DOWNLOADS="/dev/shm/darkhunt-downloads-${USER}"
+SHM_QUARANTINE="/dev/shm/darkwarden-quarantine-${USER}"
+SHM_DOWNLOADS="/dev/shm/darkwarden-downloads-${USER}"
 
 is_tmpfs() {
   local target="$1"

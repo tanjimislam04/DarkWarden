@@ -265,7 +265,7 @@ sudo apt install -y ufw torbrowser-launcher python3-notify2 libnotify-bin curl g
 sudo apt install -y docker.io containerd && sudo systemctl enable --now docker
 
 # 2. Make scripts executable
-cd ~/robin
+cd ~/darkwarden
 chmod +x *.sh vpn/*.sh auto_sanitizer.py
 
 # 3. Install Firejail Sandbox & Dangerzone Modules
@@ -285,7 +285,7 @@ torbrowser-launcher
 Execute these operational steps in exact sequence for every dark-web research session:
 
 ```bash
-cd ~/robin
+cd ~/darkwarden
 
 # ==============================================================================
 # STEP 1: ENGAGE VPN & AIRTIGHT HOST KILLSWITCH

@@ -19,14 +19,14 @@ import shutil
 import subprocess
 from pathlib import Path
 
-ROBIN_DIR = Path(__file__).resolve().parent
-QUARANTINE_DIR = ROBIN_DIR / "investigations" / "quarantine"
-LOG_FILE = ROBIN_DIR / "investigations" / "sanitizer.log"
+DARKWARDEN_DIR = Path(__file__).resolve().parent
+QUARANTINE_DIR = DARKWARDEN_DIR / "investigations" / "quarantine"
+LOG_FILE = DARKWARDEN_DIR / "investigations" / "sanitizer.log"
 
 WATCH_DIRS = [
     Path.home() / "Downloads",
     Path.home() / ".local" / "share" / "torbrowser" / "tbb" / "x86_64" / "tor-browser" / "Browser" / "Downloads",
-    ROBIN_DIR / "investigations" / "downloads"
+    DARKWARDEN_DIR / "investigations" / "downloads"
 ]
 
 IGNORE_EXTENSIONS = {".part", ".crdownload", ".tmp", ".download", ".aria2"}
@@ -88,7 +88,7 @@ def sanitize_and_alert(file_path: Path):
     PROCESSED_FILES.add(file_path)
     
     # Run ./sanitize-file.sh
-    sanitize_script = ROBIN_DIR / "sanitize-file.sh"
+    sanitize_script = DARKWARDEN_DIR / "sanitize-file.sh"
     out_dir = file_path.parent
     
     try:
