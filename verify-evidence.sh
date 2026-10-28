@@ -25,12 +25,14 @@ fi
 
 # Step 2: Verify GPG Detached Signature on Ledger
 echo -n "[1] Evidence Ledger GPG Signature: "
+SIGNATURE_VALID=0
 if [ -f "$LEDGER_SIG" ]; then
   if gpg --verify "$LEDGER_SIG" "$LEDGER" >/dev/null 2>&1; then
     SIGNER_INFO=$(gpg --verify "$LEDGER_SIG" "$LEDGER" 2>&1 | awk '/Good signature from/ {print substr($0, index($0,$4))}' | head -n 1)
     echo "VALID & UNTAMPERED"
     echo "    [✓] Signer: $SIGNER_INFO"
     echo "    [✓] Non-Repudiation: 100% Guaranteed (No bytes altered since signing)"
+    SIGNATURE_VALID=1
   else
     echo "TAMPERED / INVALID SIGNATURE!"
     echo "    [!] CRITICAL ALERT: Evidence ledger has been modified after signature creation!"
@@ -84,7 +86,12 @@ done < "$LEDGER"
 
 echo "----------------------------------------------------------"
 echo "[+] Audit Summary: $TOTAL artifacts tracked, $MATCHED verified, $FAILED discrepancies."
-if [ "$FAILED" -eq 0 ] && [ "$TOTAL" -gt 0 ]; then
-  echo "[✓] Chain of Custody: 100% Cryptographically Admissible."
+if [ "$FAILED" -eq 0 ] && [ "$TOTAL" -gt 0 ] && [ "$SIGNATURE_VALID" -eq 1 ]; then
+  echo "[✓] Chain of Custody: 100% Cryptographically Admissible & Verified."
+  echo "=========================================================="
+  exit 0
+else
+  echo "[-] Chain of Custody Audit FAILED! (Discrepancies or signature mismatch found)"
+  echo "=========================================================="
+  exit 1
 fi
-echo "=========================================================="
