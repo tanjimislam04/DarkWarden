@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
-# Project Dark Hunt — Layer 5 Universal Anti-Malware & File Sanitizer
-# Team NullX · Department of Software Engineering, DIU
-# Author: MD RAKIB HASAN APON & Md. Tanjim Islam
+# Safe Dark Web Access & Threat Intelligence Disinfection Architecture
+# Layer 5 Universal Anti-Malware & File Sanitizer
+# Author: Md. Tanjim Islam (tanjimislam04)
 # Solutions: Universal Defanger (1) + Exif Stripper (2) + Static Triage (4)
 set -euo pipefail
 

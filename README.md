@@ -391,13 +391,39 @@ For dark-web intelligence to be admissible in legal or law-enforcement contexts,
 
 ---
 
-## ⚖️ 8. Ethical Rules of Engagement (ROE)
+## ⚖️ 8. Ethical Rules of Engagement (ROE) & Operational Constraints
 
-1. **Passive Lawful Observation Only:** Research is strictly confined to publicly claimed and passively observable breach announcements.
-2. **Absolute Prohibition on Active Attacks:** No vulnerability scanning, port scanning, or DoS testing against any dark web or victim infrastructure.
-3. **Zero Credential Testing:** Never attempt to authenticate into third-party or government systems using leaked credentials.
-4. **Mandatory PII Redaction:** All Personally Identifiable Information (NIDs, passwords, banking info) must be masked (`*****`) prior to archiving.
-5. **Zero Commercial Transactions:** Never purchase databases, exploits, or memberships from cybercriminals.
+Operating in dark web environments, analyzing underground threat actor leak sites, and handling untrusted payloads presents severe legal, ethical, and operational risks. This architecture enforces strict adherence to defensive Cyber Threat Intelligence (CTI) standards, the Budapest Convention on Cybercrime, and ISO/IEC 27037 digital evidence integrity guidelines.
+
+### 8.1 Technical Enforcement Matrix
+
+| Architectural Defense Layer | Operational Restriction Enforced | Defensive Rationale & Legal Safeguard |
+|---|---|---|
+| **Layer 1 & Layer 2: VPN Killswitch & IPv6 Blackhole** | **No Raw Egress / Strict Anonymity** | Enforces complete isolation from ISP surveillance and prevents accidental clearnet exposure of the investigator's true IP. |
+| **Layer 3: RAM-Backed `tmpfs` Anti-Forensics** | **Zero Persistent Contraband / Ephemeral Staging** | Untrusted payloads reside exclusively in volatile memory (`/dev/shm`), ensuring illegal or contaminated material is irrevocably wiped upon session termination. |
+| **Layer 4: Hardened Firejail & D-Bus/Clipboard Isolation** | **No Host Compromise / Passive Observation Only** | D-Bus, audio/video devices, and host IPC are blocked; hostile scripts cannot compromise the host system, steal host clipboard data, or log keystrokes. |
+| **Layer 5: Automated YARA Triage & Dangerzone Disinfection** | **Mandatory Payload Neutralization & No Malware Propagation** | Dangerous active content (macros, embedded exploits, PDF actions) is converted into pixel-rendered sanitized PDFs. Live malware is never executed on the host. |
+| **Layer 6: GPG 4096-Bit Non-Repudiation Evidence Ledger** | **Immutable Chain of Custody & Court-Admissibility** | SHA-256 digests and detached GPG signatures guarantee forensic evidence cannot be manipulated or fabricated, meeting judicial integrity standards (FRE 902(14)). |
+
+### 8.2 Core Operational Principles
+
+1. **Passive Lawful Observation Only (Zero Attack Egress):**
+   - The platform is strictly constrained to passive monitoring of publicly accessible `.onion` breach disclosures, ransomware PR portals, and threat-actor announcements.
+   - Absolutely no port scanning (Nmap), vulnerability exploitation, brute-forcing, SQL injection, or denial-of-service (DoS) may ever be directed at any hidden service, relay, or third-party infrastructure.
+
+2. **Absolute Prohibition on Purchasing or Financial Interaction:**
+   - Under no circumstances shall cryptocurrency (Bitcoin, Monero) or any financial consideration be exchanged with threat actors, illicit brokers, or dark web marketplaces.
+   - No payment shall be made for stolen databases, private keys, zero-day exploits, or invite codes. Research is confined strictly to open telemetry and public leaks.
+
+3. **Zero Credential Re-Testing or Unauthorized Access:**
+   - Leaked credentials, database dumps, or authentication tokens uncovered during threat triage must **NEVER** be tested, verified, or submitted against victim or third-party login portals. Testing leaked credentials constitutes unauthorized access under computer fraud statutes.
+
+4. **Mandatory PII Masking and Data Privacy Compliance:**
+   - Any sensitive Personally Identifiable Information (PII) — including National Identity numbers, banking records, health data, and unhashed credentials — must be scrubbed, sanitized, or redacted (`*****`) before archiving or reporting.
+
+5. **Strict Chain of Custody & Responsible Disclosure:**
+   - All documented intelligence must be recorded through `log-evidence.sh` with GPG detached cryptographic signatures to guarantee timestamp and hash immutability.
+   - Legitimate critical vulnerabilities or imminent threats discovered during research must be responsibly disclosed to appropriate national CERTs, affected organizations, or academic authorities through secure channels.
 
 ---
 

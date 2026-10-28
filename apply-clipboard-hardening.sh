@@ -24,7 +24,7 @@ USER_JS="$TOR_PROFILE_DIR/user.js"
 echo "[*] Enforcing strict anti-snooping rules in: $USER_JS"
 
 cat <<'EOF' > "$USER_JS"
-// Project Dark Hunt — Team NullX Hardware & Clipboard Privacy Policy
+// Tor Browser Hardened Hardware & Clipboard Isolation Policy
 
 // 1. Anti-Clipboard Hijacking & Snooping
 user_pref("dom.events.asyncClipboard.readText", false);

@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
-# Project Dark Hunt — Package Toolkit for Team (Excludes Secrets)
-# Team NullX
+# Safe Dark Web Access & Threat Intelligence Disinfection Toolkit
+# Distribution Packaging Script
 set -euo pipefail
 cd "$(dirname "$0")"
 
-PACKAGE_NAME="TeamNullX-SafeTor-Toolkit-SHARE.tgz"
-echo "==> Creating clean team share package: $PACKAGE_NAME..."
+PACKAGE_NAME="SafeDarkWeb-Toolkit-SHARE.tgz"
+echo "==> Creating clean distribution package: $PACKAGE_NAME..."
 
 # Remove any old package
 rm -f "$PACKAGE_NAME"
@@ -44,5 +44,4 @@ echo "=========================================================="
 echo "[+] SUCCESS: $PACKAGE_NAME created!"
 echo "    Contains: 6-Layer Architecture + obfs4 Torrc + Firejail + Killswitch + Sanitizer"
 echo "    Excluded: .env (API keys), investigations, personal credentials"
-echo "    You can now safely share this with Rafi, Tanjim, and Apon!"
 echo "=========================================================="

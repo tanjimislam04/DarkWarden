@@ -1,4 +1,4 @@
-# Project Dark Hunt — End-to-End System Architecture
+# Safe Dark Web Access & Threat Intelligence Disinfection Architecture
 
 **Classification:** Lawful Cyber Exposure & Dark Web Threat Intelligence  
 **Target:** 45 Key Point Installations (KPIs) of Bangladesh  
@@ -158,3 +158,16 @@ cd ~/robin
 ./stop-tor-browser.sh
 ./vpn/project-vpn-off.sh
 ```
+
+---
+
+## 4. Ethical Rules of Engagement (ROE) & Operational Constraints
+
+| Defense Layer | Restriction Enforced | Defensive Rationale & Legal Safeguard |
+|---|---|---|
+| **Layer 1 & Layer 2: VPN Killswitch & IPv6 Blackhole** | **No Raw Egress / Strict Anonymity** | Enforces complete isolation from ISP surveillance and prevents accidental clearnet exposure of the investigator's true IP. |
+| **Layer 3: RAM-Backed `tmpfs` Anti-Forensics** | **Zero Persistent Contraband / Ephemeral Staging** | Untrusted payloads reside exclusively in volatile memory (`/dev/shm`), ensuring illegal or contaminated material is irrevocably wiped upon session termination. |
+| **Layer 4: Hardened Firejail & D-Bus/Clipboard Isolation** | **No Host Compromise / Passive Observation Only** | D-Bus, audio/video devices, and host IPC are blocked; hostile scripts cannot compromise the host system, steal host clipboard data, or log keystrokes. |
+| **Layer 5: Automated YARA Triage & Dangerzone Disinfection** | **Mandatory Payload Neutralization & No Malware Propagation** | Dangerous active content (macros, embedded exploits, PDF actions) is converted into pixel-rendered sanitized PDFs. Live malware is never executed on the host. |
+| **Layer 6: GPG 4096-Bit Non-Repudiation Evidence Ledger** | **Immutable Chain of Custody & Court-Admissibility** | SHA-256 digests and detached GPG signatures guarantee forensic evidence cannot be manipulated or fabricated, meeting judicial integrity standards (FRE 902(14)). |
+
