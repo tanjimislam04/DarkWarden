@@ -29,6 +29,8 @@ tar --exclude='.env' \
     install-firejail.sh \
     install-dangerzone.sh \
     log-evidence.sh \
+    verify-evidence.sh \
+    setup-gpg-key.sh \
     package-toolkit.sh \
     vpn/ \
     .env.example \

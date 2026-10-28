@@ -69,9 +69,10 @@
  ║                                    ▼                                             ║
  ║   ┌────────────────────────────────────────────────────────────────────────┐     ║
  ║   │ LAYER 6: EVIDENCE INTEGRITY & CHAIN OF CUSTODY                         │     ║
- ║   │ SHA-256 Cryptographic Hash Generation + Immutable CSV Audit Ledger     │     ║
- ║   │ logs artifact name, hash, timestamp, and investigator KPI tag          │     ║
- ║   └────────────────────────────────────────────────────────────────────────┘     ║
+ ║   │ • SHA-256 Cryptographic Hash Generation + Immutable CSV Audit Ledger   │     ║
+ ║   │ • Military-Grade 4096-bit GPG Detached Digital Signing (Non-Repudiation)│    ║
+ ║   │ • Live Audit Verification Tool (verify-evidence.sh)                    │     ║
+ ║   └────────────────────────────────┬───────────────────────────────────────┘     ║
  ║                                                                                  ║
  ╚══════════════════════════════════════════════════════════════════════════════════╝
 ```
@@ -97,13 +98,18 @@
 ├── stop-tor-browser.sh              ← Clean Tor browser & sentry shutdown
 ├── install-firejail.sh              ← Firejail sandbox automated installer
 ├── install-dangerzone.sh            ← Dangerzone anti-malware installer
-├── log-evidence.sh                  ← Cryptographic SHA-256 evidence ledger recorder
+├── setup-gpg-key.sh                 ← Investigator GPG 4096-bit key generator & exporter
+├── log-evidence.sh                  ← Cryptographic SHA-256 & GPG evidence ledger recorder
+├── verify-evidence.sh               ← Tamper-evident GPG signature & SHA-256 audit tool
 ├── package-toolkit.sh               ← Clean team distribution bundler
 ├── investigations/                  ← Monitored folder, evidence & quarantine
 │   ├── downloads/                   ← Volatile RAM-backed ingestion folder (tmpfs)
 │   ├── quarantine/                  ← Volatile RAM-backed isolated storage (tmpfs)
-│   ├── evidence/                    ← Persistent SHA-256 verified artifact repository
-│   └── evidence_ledger.csv          ← Immutable audit ledger
+│   ├── evidence/                    ← Persistent SHA-256 & GPG verified artifact repository
+│   │   ├── evidence_ledger.csv      ← Immutable audit ledger
+│   │   ├── evidence_ledger.csv.asc  ← GPG Detached Armored Digital Signature
+│   │   └── team_nullx_public_key.asc← Public GPG key for court / team verification
+│   └── evidence_ledger.csv          ← Symlink to evidence/evidence_ledger.csv
 └── vpn/
     ├── project-vpn-on.sh            ← Starts VPN + pins airtight UFW killswitch
     ├── project-vpn-off.sh           ← Cleanly restores normal network & removes killswitch
