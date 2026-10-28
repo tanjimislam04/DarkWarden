@@ -1,15 +1,15 @@
 #!/usr/bin/env bash
-# Safe Dark Web Access — Investigator GPG Key Generator & Exporter
+# DarkWarden — Investigator GPG Key Generator & Exporter
 # Department of Software Engineering, Daffodil International University (DIU)
 # Author: Md. Tanjim Islam (tanjimislam04)
 set -euo pipefail
 
 KEY_NAME="${1:-Md. Tanjim Islam}"
 KEY_EMAIL="${2:-islamtanjim2004@gmail.com}"
-KEY_COMMENT="Safe Dark Web Defense & Evidence Key"
+KEY_COMMENT="DarkWarden Evidence & Threat Intelligence Key"
 
 echo "=========================================================="
-echo "  Safe Dark Web Access — Investigator GPG Key Initialization"
+echo "  DarkWarden — Investigator GPG Key Initialization"
 echo "=========================================================="
 
 # Check if key already exists

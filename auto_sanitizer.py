@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Safe Dark Web Access — Automated Real-Time Download Sanitizer & Sentry
+DarkWarden — Automated Real-Time Download Sanitizer & Sentry
 Department of Software Engineering, Daffodil International University (DIU)
 Author: Md. Tanjim Islam (tanjimislam04)
 
@@ -39,7 +39,7 @@ def send_alert(title: str, message: str, urgency: str = "critical"):
             "notify-send",
             "-u", urgency,
             "-i", "security-high",
-            "-a", "Safe Dark Web Sentry",
+            "-a", "DarkWarden",
             title,
             message
         ], check=False)
@@ -131,7 +131,7 @@ def sanitize_and_alert(file_path: Path):
             )
             send_alert(alert_title, alert_body, urgency="critical")
         else:
-            alert_title = "🛡️ Safe Dark Web Access — File Auto-Sanitized!"
+            alert_title = "🛡️ DarkWarden — File Auto-Sanitized!"
             alert_body = (
                 f"⚠️ Untrusted Download: {file_path.name}\n"
                 f"✅ Disinfected Sterile File: {safe_name}\n"
@@ -162,7 +162,7 @@ def main():
             log_event(f"[!] Warning: Could not watch {d}: {e}")
 
     send_alert(
-        "🛡️ Safe Dark Web Sentry Active",
+        "🛡️ DarkWarden Sentry Active",
         "Real-time download sanitizer is watching Downloads. All dark-web files will be auto-sanitized.",
         urgency="low"
     )

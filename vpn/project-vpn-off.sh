@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Safe Dark Web Access — Teardown VPN & Disable Killswitch
+# DarkWarden — Teardown VPN & Disable Killswitch
 # Safe Dark Web Access & Defense Architecture
 set -euo pipefail
 
@@ -8,7 +8,7 @@ vpn_iface_up() {
 }
 
 echo "=========================================================="
-echo "  Safe Dark Web Access — Ending Secure Session"
+echo "  DarkWarden — Ending Secure Session"
 echo "=========================================================="
 
 # 1. First attempt: Disconnect via user-space protonvpn CLI (with user's active DBus session)

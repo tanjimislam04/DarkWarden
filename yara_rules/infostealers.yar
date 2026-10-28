@@ -1,5 +1,5 @@
 /*
- * Safe Dark Web Access — Infostealer Log & Dump YARA Rules
+ * DarkWarden — Infostealer Log & Dump YARA Rules
  * Department of Software Engineering, Daffodil International University (DIU)
  * Author: Md. Tanjim Islam (tanjimislam04)
  */

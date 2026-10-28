@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 """
-Safe Dark Web Access — Automated YARA IOC & Threat Intelligence Scanner
+DarkWarden — Automated YARA IOC & Threat Intelligence Scanner
 Department of Software Engineering, Daffodil International University (DIU)
 Author: Md. Tanjim Islam (tanjimislam04)
 
-Scans files and extracted archives against the Safe Dark Web Threat Intelligence ruleset.
+Scans files and extracted archives against the DarkWarden Threat Intelligence ruleset.
 Detects Infostealer logs (Lumma, RedLine, Vidar), Ransomware extortion notes,
 weaponized document exploits (Follina, Equation Editor, DDE), and credential leaks.
 """
@@ -110,7 +110,7 @@ def main():
     threats_found = 0
 
     print("==========================================================")
-    print("  Safe Dark Web Access — YARA Threat Intelligence Triage")
+    print("  DarkWarden — YARA Threat Intelligence Triage")
     print("==========================================================")
 
     for f in files_to_scan:

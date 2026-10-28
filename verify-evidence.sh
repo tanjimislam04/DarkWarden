@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Safe Dark Web Access — Cryptographic Evidence Integrity & GPG Verifier
+# DarkWarden — Cryptographic Evidence Integrity & GPG Verifier
 # Department of Software Engineering, Daffodil International University (DIU)
 # Author: Md. Tanjim Islam (tanjimislam04)
 set -euo pipefail
@@ -11,7 +11,7 @@ PUBKEY="$EVIDENCE_DIR/investigator_public_key.asc"
 [ ! -f "$PUBKEY" ] && [ -f "$EVIDENCE_DIR/team_nullx_public_key.asc" ] && PUBKEY="$EVIDENCE_DIR/team_nullx_public_key.asc"
 
 echo "=========================================================="
-echo "  Safe Dark Web Access — Cryptographic Evidence Audit Tool"
+echo "  DarkWarden — Cryptographic Evidence Audit Tool"
 echo "=========================================================="
 
 if [ ! -f "$LEDGER" ]; then

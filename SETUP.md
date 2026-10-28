@@ -1,4 +1,4 @@
-# Safe Dark Web Access, Process Sandboxing & File Disinfection Architecture
+# 🛡️ DarkWarden — Safe Dark Web Access, Process Sandboxing & File Disinfection Architecture
 
 <div align="center">
 
@@ -429,7 +429,7 @@ Operating in dark web environments, analyzing underground threat actor leak site
 
 <div align="center">
 
-**Safe Dark Web Access & Threat Intelligence Disinfection Platform**  
+**DarkWarden — Safe Dark Web Access & Host Defense Platform**  
 *Department of Software Engineering · Daffodil International University*  
 *Document Author:* **Md. Tanjim Islam (Tanjim_islam)**
 

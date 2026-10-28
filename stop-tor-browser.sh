@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Safe Dark Web Access — Stop Firejail Tor Browser
+# DarkWarden — Stop Firejail Tor Browser
 # Safe Dark Web Access & Defense Architecture
 set -euo pipefail
 

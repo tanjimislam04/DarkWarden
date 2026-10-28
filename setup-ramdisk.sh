@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Safe Dark Web Access — Volatile RAM-backed Anti-Forensics Controller
+# DarkWarden — Volatile RAM-backed Anti-Forensics Controller
 # Department of Software Engineering, Daffodil International University (DIU)
 # Author: Md. Tanjim Islam (tanjimislam04)
 set -euo pipefail
@@ -27,7 +27,7 @@ is_tmpfs() {
 
 mount_ramdisk() {
   echo "=========================================================="
-  echo "  Safe Dark Web Access — Activating Volatile RAM Storage"
+  echo "  DarkWarden — Activating Volatile RAM Storage"
   echo "=========================================================="
 
   mkdir -p "$QUARANTINE_DIR" "$DOWNLOADS_DIR"
@@ -94,7 +94,7 @@ wipe_ramdisk() {
 
 unmount_ramdisk() {
   echo "=========================================================="
-  echo "  Safe Dark Web Access — Teardown Volatile RAM Storage"
+  echo "  DarkWarden — Teardown Volatile RAM Storage"
   echo "=========================================================="
   wipe_ramdisk
 
@@ -129,7 +129,7 @@ unmount_ramdisk() {
 
 status_ramdisk() {
   echo "=========================================================="
-  echo "  Safe Dark Web Access — RAM Storage Status"
+  echo "  DarkWarden — RAM Storage Status"
   echo "=========================================================="
   if is_tmpfs "$QUARANTINE_DIR"; then
     echo "[✓] Quarantine Status: ACTIVE IN RAM (tmpfs)"

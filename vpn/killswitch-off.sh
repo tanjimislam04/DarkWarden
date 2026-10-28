@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Safe Dark Web Access — Emergency Killswitch Unlock
+# DarkWarden — Emergency Killswitch Unlock
 # Safe Dark Web Access & Defense Architecture
 set -euo pipefail
 

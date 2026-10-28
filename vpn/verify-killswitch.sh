@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
-# Safe Dark Web Access — Automated Killswitch Leak & Security Verification Tool
+# DarkWarden — Automated Killswitch Leak & Security Verification Tool
 # Department of Software Engineering, Daffodil International University (DIU)
 # Author: Md. Tanjim Islam (tanjimislam04)
 set -euo pipefail
 
 echo "=========================================================="
-echo "  Safe Dark Web Access — Live Killswitch Security Audit"
+echo "  DarkWarden — Live Killswitch Security Audit"
 echo "=========================================================="
 
 vpn_iface_up() {

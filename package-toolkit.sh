@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
-# Safe Dark Web Access & Threat Intelligence Disinfection Toolkit
+# DarkWarden — Safe Dark Web Access & Host Defense Toolkit
 # Distribution Packaging Script
 set -euo pipefail
 cd "$(dirname "$0")"
 
-PACKAGE_NAME="SafeDarkWeb-Toolkit-SHARE.tgz"
+PACKAGE_NAME="DarkWarden-Toolkit-SHARE.tgz"
 echo "==> Creating clean distribution package: $PACKAGE_NAME..."
 
 # Remove any old package

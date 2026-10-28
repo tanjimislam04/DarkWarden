@@ -1,5 +1,5 @@
 /*
- * Safe Dark Web Access — Ransomware & Extortion Notes YARA Rules
+ * DarkWarden — Ransomware & Extortion Notes YARA Rules
  * Department of Software Engineering, Daffodil International University (DIU)
  * Author: Md. Tanjim Islam (tanjimislam04)
  */

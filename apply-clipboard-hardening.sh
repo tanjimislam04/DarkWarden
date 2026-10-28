@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Safe Dark Web Access — Tor Browser Clipboard & Anti-Snooping Hardener
+# DarkWarden — Tor Browser Clipboard & Anti-Snooping Hardener
 # Department of Software Engineering, Daffodil International University (DIU)
 # Author: Md. Tanjim Islam (tanjimislam04)
 set -euo pipefail
@@ -7,7 +7,7 @@ set -euo pipefail
 TOR_PROFILE_DIR="$HOME/.local/share/torbrowser/tbb/x86_64/tor-browser/Browser/TorBrowser/Data/Browser/profile.default"
 
 echo "=========================================================="
-echo "  Safe Dark Web Access — Clipboard & Anti-Snooping Hardening"
+echo "  DarkWarden — Clipboard & Anti-Snooping Hardening"
 echo "=========================================================="
 
 if [ ! -d "$TOR_PROFILE_DIR" ]; then

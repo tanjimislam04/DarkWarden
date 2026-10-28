@@ -1,5 +1,5 @@
 /*
- * Safe Dark Web Access — Credential & Database Leak YARA Rules
+ * DarkWarden — Credential & Database Leak YARA Rules
  * Department of Software Engineering, Daffodil International University (DIU)
  * Author: Md. Tanjim Islam (tanjimislam04)
  */

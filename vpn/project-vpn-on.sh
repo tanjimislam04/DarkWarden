@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Safe Dark Web Access — Start VPN & Activate Airtight Host Killswitch
+# DarkWarden — Start VPN & Activate Airtight Host Killswitch
 # Department of Software Engineering, Daffodil International University (DIU)
 # Author: Md. Tanjim Islam (tanjimislam04)
 set -euo pipefail
@@ -30,7 +30,7 @@ get_vpn_endpoint_ip() {
 }
 
 echo "=========================================================="
-echo "  Safe Dark Web Access — Initializing Secure Session"
+echo "  DarkWarden — Initializing Secure Session"
 echo "=========================================================="
 
 # 1. First attempt: Connect Proton VPN in user space if not already active

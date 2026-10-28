@@ -1,5 +1,5 @@
 /*
- * Safe Dark Web Access — Master YARA Index
+ * DarkWarden — Master YARA Index
  * Department of Software Engineering, Daffodil International University (DIU)
  * Author: Md. Tanjim Islam (tanjimislam04)
  */

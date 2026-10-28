@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Safe Dark Web Access & Threat Intelligence Disinfection Architecture
+# 🛡️ DarkWarden — Safe Dark Web Access & Host Defense Architecture
 # Layer 5 Universal Anti-Malware & File Sanitizer
 # Author: Md. Tanjim Islam (tanjimislam04)
 # Solutions: Universal Defanger (1) + Exif Stripper (2) + Static Triage (4)
@@ -31,7 +31,7 @@ EXT="${BASENAME##*.}"
 EXT_LOWER=$(echo "$EXT" | tr '[:upper:]' '[:lower:]')
 
 echo "=========================================================="
-echo "  Safe Dark Web Access — Anti-Malware Triage & Sanitizer"
+echo "  DarkWarden — Anti-Malware Triage & Sanitizer"
 echo "=========================================================="
 echo "[*] Target File:   $INPUT_FILE"
 ORIG_HASH=$(sha256sum "$INPUT_FILE" | awk '{print $1}')

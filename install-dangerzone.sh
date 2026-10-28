@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
-# Safe Dark Web Access — Install Dangerzone & File Disinfection Tools
+# DarkWarden — Install Dangerzone & File Disinfection Tools
 # Department of Software Engineering, DIU
 set -euo pipefail
 
 echo "=========================================================="
-echo "  Safe Dark Web Access — File Disinfection Tools Installer"
+echo "  DarkWarden — File Disinfection Tools Installer"
 echo "=========================================================="
 
 if command -v dangerzone-cli >/dev/null 2>&1 || command -v dangerzone >/dev/null 2>&1; then

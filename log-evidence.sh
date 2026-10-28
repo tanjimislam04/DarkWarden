@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Safe Dark Web Access — Cryptographic Evidence Integrity & GPG Logger
+# DarkWarden — Cryptographic Evidence Integrity & GPG Logger
 # Department of Software Engineering, Daffodil International University (DIU)
 # Author: Md. Tanjim Islam (tanjimislam04)
 set -euo pipefail

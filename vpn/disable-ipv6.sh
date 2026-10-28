@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
-# Safe Dark Web Access — Permanent IPv6 Leak Blackhole Script
+# DarkWarden — Permanent IPv6 Leak Blackhole Script
 # Department of Software Engineering, Daffodil International University (DIU)
 # Author: Md. Tanjim Islam (tanjimislam04)
 set -euo pipefail
 
 echo "=========================================================="
-echo "  Safe Dark Web Access — Permanent IPv6 Blackhole Setup"
+echo "  DarkWarden — Permanent IPv6 Blackhole Setup"
 echo "=========================================================="
 
 if [ "$(id -u)" -ne 0 ]; then

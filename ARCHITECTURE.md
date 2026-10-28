@@ -1,4 +1,4 @@
-# Safe Dark Web Access & Threat Intelligence Disinfection Architecture
+# 🛡️ DarkWarden — Safe Dark Web Access & Host Defense Architecture
 
 **Classification:** Lawful Cyber Exposure & Dark Web Threat Intelligence  
 **Scope:** Host System Protection, Tor Anonymity, Anti-Forensics & Untrusted Payload Disinfection  

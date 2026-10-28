@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Safe Dark Web Access — Disposable Docker Sandbox Viewer
+# DarkWarden — Disposable Docker Sandbox Viewer
 # Department of Software Engineering, Daffodil International University (DIU)
 # Author: Md. Tanjim Islam (tanjimislam04)
 set -euo pipefail
@@ -23,7 +23,7 @@ ABS_PATH=$(realpath "$TARGET_FILE")
 BASENAME=$(basename "$ABS_PATH")
 
 echo "=========================================================="
-echo "  Safe Dark Web Access — Disposable Sandbox Viewer"
+echo "  DarkWarden — Disposable Sandbox Viewer"
 echo "=========================================================="
 echo "[*] Inspecting: $BASENAME"
 echo "[*] Absolute:   $ABS_PATH"
