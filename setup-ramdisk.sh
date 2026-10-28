@@ -82,10 +82,12 @@ mount_ramdisk() {
 wipe_ramdisk() {
   echo "[*] Securely shredding volatile quarantine artifacts..."
   if [ -d "$QUARANTINE_DIR" ]; then
-    find "$QUARANTINE_DIR" -type f -exec shred -u -z -n 1 {} + 2>/dev/null || rm -rf "${QUARANTINE_DIR:?}"/*
+    find -L "$QUARANTINE_DIR" -type f -exec shred -u -z -n 1 {} + 2>/dev/null || true
+    rm -rf "$QUARANTINE_DIR"/* 2>/dev/null || true
   fi
   if [ -d "$DOWNLOADS_DIR" ]; then
-    find "$DOWNLOADS_DIR" -type f -exec shred -u -z -n 1 {} + 2>/dev/null || rm -rf "${DOWNLOADS_DIR:?}"/*
+    find -L "$DOWNLOADS_DIR" -type f -exec shred -u -z -n 1 {} + 2>/dev/null || true
+    rm -rf "$DOWNLOADS_DIR"/* 2>/dev/null || true
   fi
   echo "[✓] Volatile RAM storage wiped clean."
 }
