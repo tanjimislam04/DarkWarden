@@ -43,12 +43,14 @@
  ║   │  ┌──────────────────────────────────────────────────────────────────┐  │     ║
  ║   │  │ Outer Wall: Firejail Sandbox                                     │  │     ║
  ║   │  │ • Conceals ~/.ssh, Desktop, bash history, credentials            │  │     ║
+ ║   │  │ • D-Bus & IPC Isolation: --nodbus, --ipc-namespace, --nosound   │  │     ║
  ║   │  │ • Drops Linux kernel capabilities (--caps.drop=all, --noroot)    │  │     ║
  ║   │  │ • Maps throwaway RAM-backed /tmp and /dev devices                │  │     ║
  ║   │  │  ┌────────────────────────────────────────────────────────────┐  │  │     ║
  ║   │  │  │ Inner Wall: Mozilla Content Sandbox (Level 3)              │  │  │     ║
  ║   │  │  │ • Isolated child rendering processes with Seccomp-BPF      │  │  │     ║
  ║   │  │  │ • Security Level: "Safest" (JavaScript disabled globally)  │  │  │     ║
+ ║   │  │  │ • Clipboard Isolation: Host clipboard snooping BLOCKED     │  │  │     ║
  ║   │  │  └────────────────────────────────────────────────────────────┘  │  │     ║
  ║   │  └──────────────────────────────────────────────────────────────────┘  │     ║
  ║   └────────────────────────────────┬───────────────────────────────────────┘     ║
@@ -96,6 +98,7 @@
 ├── view-in-sandbox.sh               ← Disposable Zero-Network Docker Viewer
 ├── run-tor-browser.sh               ← Nested double-sandbox Tor launcher (Firejail)
 ├── stop-tor-browser.sh              ← Clean Tor browser & sentry shutdown
+├── apply-clipboard-hardening.sh     ← Tor Browser user.js clipboard & anti-snooping hardener
 ├── install-firejail.sh              ← Firejail sandbox automated installer
 ├── install-dangerzone.sh            ← Dangerzone anti-malware installer
 ├── setup-gpg-key.sh                 ← Investigator GPG 4096-bit key generator & exporter

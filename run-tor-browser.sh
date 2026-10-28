@@ -41,14 +41,20 @@ if [ -x "./setup-ramdisk.sh" ]; then
   ./setup-ramdisk.sh mount >/dev/null 2>&1 || true
 fi
 
-# 4. Launch with Firejail Double-Layered Sandbox if installed
+# 4. Enforce Clipboard & Anti-Snooping Privacy Hardening
+if [ -x "./apply-clipboard-hardening.sh" ]; then
+  ./apply-clipboard-hardening.sh >/dev/null 2>&1 || true
+fi
+
+# 5. Launch with Firejail Double-Layered Sandbox if installed
 if command -v firejail >/dev/null 2>&1; then
   echo "[+] Launching inside Double-Layered Nested Sandbox:"
   echo "    [1] Outer Wall (Firejail): Host files (~/.ssh, Documents, Desktop) 100% hidden."
   echo "    [2] Inner Wall (Mozilla L3): Content processes isolated with Seccomp-BPF."
-  echo "    [3] Network & Transports: Tor daemon & obfs4 bridges allowed to communicate."
-  nohup firejail "$TOR_CMD" >/tmp/tor-browser-firejail.log 2>&1 &
-  echo "[+] Tor Browser is now RUNNING in Firejail Nested Double Sandbox!"
+  echo "    [3] IPC & D-Bus Isolation: --nodbus, --ipc-namespace, --nosound, --novideo."
+  echo "    [4] Anti-Snooping: Host clipboard protected from web-page reads & hooks."
+  nohup firejail --nodbus --nosound --novideo --ipc-namespace --caps.drop=all --nonewprivs --noroot "$TOR_CMD" >/tmp/tor-browser-firejail.log 2>&1 &
+  echo "[+] Tor Browser is now RUNNING in Hardened Firejail Nested Double Sandbox!"
 else
   echo "[+] Launching Tor Browser (Native Mozilla Level-3 Sandbox + Seccomp-BPF)..."
   nohup "$TOR_CMD" >/tmp/tor-browser.log 2>&1 &

@@ -20,6 +20,7 @@ tar --exclude='.env' \
     run-tor-browser.sh \
     stop-tor-browser.sh \
     setup-ramdisk.sh \
+    apply-clipboard-hardening.sh \
     sanitize-file.sh \
     view-in-sandbox.sh \
     auto_sanitizer.py \
