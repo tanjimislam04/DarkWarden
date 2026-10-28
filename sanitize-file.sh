@@ -23,6 +23,7 @@ if [ ! -f "$INPUT_FILE" ]; then
   exit 1
 fi
 
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 mkdir -p "$OUT_DIR"
 BASENAME=$(basename "$INPUT_FILE")
 FILENAME="${BASENAME%.*}"
@@ -123,6 +124,11 @@ if [ "$STATUS" = "THREAT_DETECTED" ]; then
   echo ""
 else
   echo "[+] Static Triage: No active exploit signatures detected (Structure Clean)."
+fi
+
+# Run YARA Rules Threat Intelligence Triage
+if [ -f "$SCRIPT_DIR/yara_scanner.py" ]; then
+  python3 "$SCRIPT_DIR/yara_scanner.py" "$INPUT_FILE" 2>/dev/null || true
 fi
 echo "----------------------------------------------------------"
 

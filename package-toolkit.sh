@@ -23,6 +23,8 @@ tar --exclude='.env' \
     sanitize-file.sh \
     view-in-sandbox.sh \
     auto_sanitizer.py \
+    yara_scanner.py \
+    yara_rules/ \
     watch-and-sanitize.sh \
     install-firejail.sh \
     install-dangerzone.sh \

@@ -116,6 +116,7 @@ All outbound and inbound operations flow through six strictly isolated defense t
  ║   │ LAYER 5: PAYLOAD DISINFECTION & SENTRY (Auto-Sanitizer Daemon)         │     ║
  ║   │ • Volatile RAM Storage (setup-ramdisk.sh: zero physical disk writes)   │     ║
  ║   │ • Real-Time Inotify Download Watcher (auto_sanitizer.py)               │     ║
+ ║   │ • YARA Threat Intelligence Triage (Lumma, RedLine, LockBit, Follina)   │     ║
  ║   │ • Dangerzone Pixel Flattening (Destroys macros, scripts, font bugs)   │     ║
  ║   │ • CSV Formula Defanging (=cmd|... neutralized with ')                  │     ║
  ║   │ • ExifTool Metadata & Tracker Stripping                                │     ║
@@ -356,6 +357,8 @@ For dark-web intelligence to be admissible in legal or law-enforcement contexts,
 ├── LICENSE                                       # Official MIT License
 ├── setup-ramdisk.sh                              # Volatile RAM-backed Anti-Forensics storage controller
 ├── auto_sanitizer.py                             # Real-time inotify download sentry daemon
+├── yara_scanner.py                               # YARA Threat Intelligence & IOC detection engine
+├── yara_rules/                                   # Dark web threat ruleset (Infostealers, Ransomware, Exploits)
 ├── watch-and-sanitize.sh                         # Controller for auto_sanitizer.py
 ├── sanitize-file.sh                              # Layer 5 Universal Anti-Malware File Sanitizer
 ├── view-in-sandbox.sh                            # Layer 5 Solution 3: Disposable Docker Sandbox Viewer

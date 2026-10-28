@@ -58,6 +58,7 @@
  ║   │ LAYER 5: PAYLOAD DISINFECTION & SENTRY (Auto-Sanitizer Daemon)         │     ║
  ║   │ • Volatile RAM Storage (setup-ramdisk.sh: zero physical disk writes)   │     ║
  ║   │ • Real-Time Inotify Download Watcher (auto_sanitizer.py)               │     ║
+ ║   │ • YARA Threat Intelligence Triage (Lumma, RedLine, LockBit, Follina)   │     ║
  ║   │ • Dangerzone Pixel Flattening (Destroys macros, scripts, font bugs)   │     ║
  ║   │ • CSV Formula Defanging (=cmd|... neutralized with ')                  │     ║
  ║   │ • ExifTool Metadata & Tracker Stripping                                │     ║
@@ -87,6 +88,8 @@
 ├── LICENSE                          ← MIT License
 ├── setup-ramdisk.sh                 ← Volatile RAM-backed Anti-Forensics storage controller
 ├── auto_sanitizer.py                ← Real-time inotify download sentry daemon
+├── yara_scanner.py                  ← YARA Threat Intelligence & IOC detection engine
+├── yara_rules/                      ← Dark web threat ruleset (Infostealers, Ransomware, Exploits)
 ├── watch-and-sanitize.sh            ← Controller for auto_sanitizer.py
 ├── sanitize-file.sh                 ← Universal Anti-Malware File Sanitizer (4 solutions)
 ├── view-in-sandbox.sh               ← Disposable Zero-Network Docker Viewer

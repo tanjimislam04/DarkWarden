@@ -96,6 +96,16 @@ def sanitize_and_alert(file_path: Path):
         result = subprocess.run(cmd, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True, check=True)
         log_event(f"[+] Sanitizer completed for: {file_path.name}")
         
+        # Run YARA IOC & Threat Intelligence Scan
+        yara_matches = []
+        try:
+            from yara_scanner import scan_file as yara_scan, format_alert_summary
+            yara_matches = yara_scan(file_path)
+            if yara_matches:
+                log_event(f"[🚨 YARA THREAT DETECTED]: {format_alert_summary(yara_matches)}")
+        except Exception as ye:
+            log_event(f"[!] YARA scan error: {ye}")
+
         # Determine the generated safe artifact
         safe_candidates = list(out_dir.glob(f"{file_path.stem}-safe.*")) + list(out_dir.glob(f"{file_path.stem}-extracted-safe"))
         safe_name = safe_candidates[0].name if safe_candidates else f"{file_path.stem}-safe.*"
@@ -110,14 +120,24 @@ def sanitize_and_alert(file_path: Path):
         shutil.move(str(file_path), str(quarantine_target))
         log_event(f"[🔒] Hazardous original quarantined: -> {quarantine_target}")
         
-        # Send Graphical Desktop Alert
-        alert_title = "🛡️ Project Dark Hunt — File Auto-Sanitized!"
-        alert_body = (
-            f"⚠️ Untrusted Download: {file_path.name}\n"
-            f"✅ Disinfected Sterile File: {safe_name}\n"
-            f"🔒 Original quarantined (Zero host malware risk)."
-        )
-        send_alert(alert_title, alert_body, urgency="critical")
+        # Send Graphical Desktop Alert with YARA Threat Intelligence
+        if yara_matches:
+            top_threat = yara_matches[0]
+            alert_title = f"🚨 YARA ALERT: {top_threat['category']} Detected!"
+            alert_body = (
+                f"⚠️ Threat: {top_threat['description']}\n"
+                f"📁 Original: {file_path.name} [Quarantined to RAM]\n"
+                f"✅ Sterile File: {safe_name}"
+            )
+            send_alert(alert_title, alert_body, urgency="critical")
+        else:
+            alert_title = "🛡️ Project Dark Hunt — File Auto-Sanitized!"
+            alert_body = (
+                f"⚠️ Untrusted Download: {file_path.name}\n"
+                f"✅ Disinfected Sterile File: {safe_name}\n"
+                f"🔒 Original quarantined in RAM (Zero host risk)."
+            )
+            send_alert(alert_title, alert_body, urgency="critical")
         log_event(f"[✓] Alert dispatched for: {safe_name}")
         
     except subprocess.CalledProcessError as e:
